@@ -114,49 +114,52 @@ WriteLine("8. Показать четные числа от 1 до N");
 
 int[] SelectEvens(int n)
 {
-
-int [] result = new int [n+1];
+int [] result = new int [n];
+int len = 0;
 
 for (int i = 0; i<= result.Length; i++)
 {
     if (i%2==0)
     {
-    result [i] = i;
+    result [len] = i;
+    len++;
     }
 }
+Array.Resize(ref result, len);
 return result;
 }
 
 PrintArray(SelectEvens(ToInt32(ReadLine())));
 
-// WriteLine();
-// WriteLine("9. Показать последнюю цифру трёхзначного числа");
 
-// int number = ToInt32(ReadLine());
-// string text = Convert.ToString(number);
-// WriteLine(text [0]);
+WriteLine();
+WriteLine("9. Показать последнюю цифру трёхзначного числа");
 
-// WriteLine();
-// WriteLine("10. Показать вторую цифру трёхзначного числа");
+int number = ToInt32(ReadLine());
+string text = Convert.ToString(number);
+WriteLine(text [0]);
 
-// int number1 = ToInt32(ReadLine());
-// string t = Convert.ToString(number1); // Какой-то внутренний баг платформы? Без Convert не распознает ToString, но и добавлять его опять для ВСЕЙ простыни из-за пары задач как-то некорректно. И сергея на спросишь. То ли просто потому что он не одобряет этих конвертаций, то ли потому что он объяснял, а я прослушала((()))
-// WriteLine(t [1]);
+WriteLine();
+WriteLine("10. Показать вторую цифру трёхзначного числа");
+
+int number1 = ToInt32(ReadLine());
+string t = Convert.ToString(number1); // Какой-то внутренний баг платформы? Без Convert не распознает ToString, но и добавлять его опять для ВСЕЙ простыни из-за пары задач как-то некорректно. И сергея на спросишь. То ли просто потому что он не одобряет этих конвертаций, то ли потому что он объяснял, а я прослушала((()))
+WriteLine(t [1]);
 
 
 WriteLine();
 WriteLine("11. Дано число из отрезка [10, 99]. Показать наибольшую цифру числа. (ради интереся числа генерируются рандомно)");
 
-// int DigCompare(int n)
-// {
-// WriteLine (n);
-// int ten = n / 10;
-// int unit = n % 10;
-// if (ten > unit) return ten;
-// else return unit;
-// }
+int DigCompare(int n)
+{
+WriteLine (n);
+int ten = n / 10;
+int unit = n % 10;
+if (ten > unit) return ten;
+else return unit;
+}
 
-// WriteLine(DigCompare(new Random().Next(10,99)));
+WriteLine(DigCompare(new Random().Next(10,99)));
 
 
 WriteLine();
@@ -164,9 +167,11 @@ WriteLine();// -----------------------------------------------Семинар 08.
 
 WriteLine("12. Удалить вторую цифру трёхзначного числа");
 
-// int number5 = 465;
-// string totext = ToString(number5);
-// Console.Write($"{totext [0]}{totext [2]}");
+int number5 = ToInt32(ReadLine());
+string totext = Convert.ToString(number5);
+Console.Write($"{totext [0]}{totext [2]}");
+
+
 WriteLine();
 WriteLine("13. Выяснить, кратно ли число заданному, если нет, вывести остаток.");
 
@@ -175,6 +180,7 @@ WriteLine("13. Выяснить, кратно ли число заданному
 
 // if (number6 % crat == 0) Console.WriteLine ("Кратно");
 // else {Console.WriteLine (number6 % crat);}
+
 WriteLine();
 WriteLine("14. Найти третью цифру числа или сообщить, что её нет");
 
