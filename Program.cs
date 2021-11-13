@@ -179,11 +179,20 @@ SelectDigit(number, 2);
 WriteLine();
 WriteLine("13. Выяснить, кратно ли число заданному, если нет, вывести остаток.");
 
-// int number6 = 323;
-// int crat = 10;
+string FactorCheck (int number, int factor)
+{
+    if (number % factor == 0) return "Кратно";
+    else 
+    {
+    return "Не кратно. Остаток: " + number % factor;
+    }
+}
 
-// if (number6 % crat == 0) Console.WriteLine ("Кратно");
-// else {Console.WriteLine (number6 % crat);}
+int number3 = Convert.ToInt32(ReadLine());
+Write("Проверить на кратность: ");
+int factor = Convert.ToInt32(ReadLine());
+WriteLine(FactorCheck(number3, factor));
+
 
 WriteLine();
 WriteLine("14. Найти третью цифру числа или сообщить, что её нет");
@@ -198,10 +207,11 @@ WriteLine();// -----------------------------------------------
 // Почувствуй себя джуном (Задачи, которые появились на самом семинаре 08.11.2021)
 WriteLine("15. Дано число. Проверить кратно ли оно 7 и 23");
 
-// int number6 = 25;
+int number6 = 25;
 
-// if (number6 % 7 == 0 || number6 % 23 == 0) Console.WriteLine ("Кратно");
-// else {Console.WriteLine (" Не кратно");}
+if (number6 % 7 == 0 || number6 % 23 == 0) Console.WriteLine ("Кратно");
+else {Console.WriteLine (" Не кратно");}
+
 WriteLine();
 WriteLine("16. Дано число обозначающее день недели. Выяснить является номер дня недели выходным");
 
