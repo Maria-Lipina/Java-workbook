@@ -133,18 +133,21 @@ PrintArray(SelectEvens(ToInt32(ReadLine())));
 
 
 WriteLine();
-WriteLine("9. Показать последнюю цифру трёхзначного числа");
+WriteLine("9. Показать третью цифру трёхзначного числа");
 
-int number = ToInt32(ReadLine());
-string text = Convert.ToString(number);
-WriteLine(text [0]);
+void SelectDigit(string? number, int index)
+{
+    int check = Convert.ToInt32(number);
+    if(99 < check && check < 1000) Write(number [index]);
+    else {WriteLine("програмка работает только с трехзначными числами"); }
+}
+
+SelectDigit(ReadLine(), 0);
 
 WriteLine();
 WriteLine("10. Показать вторую цифру трёхзначного числа");
 
-int number1 = ToInt32(ReadLine());
-string t = Convert.ToString(number1); // Какой-то внутренний баг платформы? Без Convert не распознает ToString, но и добавлять его опять для ВСЕЙ простыни из-за пары задач как-то некорректно. И сергея на спросишь. То ли просто потому что он не одобряет этих конвертаций, то ли потому что он объяснял, а я прослушала((()))
-WriteLine(t [1]);
+SelectDigit(ReadLine(), 1);
 
 
 WriteLine();
@@ -165,11 +168,12 @@ WriteLine(DigCompare(new Random().Next(10,99)));
 WriteLine();
 WriteLine();// -----------------------------------------------Семинар 08.11.2021
 
+WriteLine();
 WriteLine("12. Удалить вторую цифру трёхзначного числа");
 
-int number5 = ToInt32(ReadLine());
-string totext = Convert.ToString(number5);
-Console.Write($"{totext [0]}{totext [2]}");
+string? number = ReadLine();
+SelectDigit(number, 0);
+SelectDigit(number, 2);
 
 
 WriteLine();
