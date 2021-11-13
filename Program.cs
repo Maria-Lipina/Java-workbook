@@ -179,19 +179,18 @@ SelectDigit(number, 2);
 WriteLine();
 WriteLine("13. Выяснить, кратно ли число заданному, если нет, вывести остаток.");
 
-string FactorCheck (int number, int factor)
+bool FactorCheck (int number, int factor)
 {
-    if (number % factor == 0) return "Кратно";
-    else 
-    {
-    return "Не кратно. Остаток: " + number % factor;
-    }
+    if (number % factor == 0) return true;
+    else return false;
 }
 
 int number3 = Convert.ToInt32(ReadLine());
 Write("Проверить на кратность: ");
 int factor = Convert.ToInt32(ReadLine());
-WriteLine(FactorCheck(number3, factor));
+
+if(FactorCheck(number3, factor)) WriteLine("Кратно");
+else {Write("Не кратно. Остаток: " + number3 % factor);}
 
 
 WriteLine();
@@ -204,27 +203,50 @@ SelectDigit(number1, 0);
 WriteLine();
 WriteLine();// -----------------------------------------------
 
+
 // Почувствуй себя джуном (Задачи, которые появились на самом семинаре 08.11.2021)
+
+WriteLine();
 WriteLine("15. Дано число. Проверить кратно ли оно 7 и 23");
 
-int number6 = 25;
+int number4 = Convert.ToInt32(ReadLine());
 
-if (number6 % 7 == 0 || number6 % 23 == 0) Console.WriteLine ("Кратно");
-else {Console.WriteLine (" Не кратно");}
+if (FactorCheck(number4, 7) && FactorCheck(number4, 23)) Console.WriteLine ("Кратно");
+else {Console.WriteLine ("Не кратно");}
+
+
+WriteLine();
+WriteLine("3. По заданному номеру дня недели вывести его название");
+
+int day = ToInt32(ReadLine());
+
+string name = day switch
+{
+1 => "понедельник",
+2 => "вторник",
+3 => "среда",
+4 => "четверг",
+5 => "пятница",
+6 => "суббота",
+7 => "воскресенье",
+_ => "нет дня недели с таким номером"
+};
+WriteLine(name);
 
 WriteLine();
 WriteLine("16. Дано число обозначающее день недели. Выяснить является номер дня недели выходным");
 
-// string WeekMethod(int arg)
-// {
-// if (arg==6 || arg ==7) 
+string WeekMethod(int arg)
+{
+if (arg==6 || arg ==7) 
 
-// return "выходной";
+return "выходной";
 
-// else return "будний день";
-// }
+else return "будний день";
+}
 
-// Console.WriteLine(WeekMethod(3));
+Console.WriteLine(WeekMethod(3));
+
 WriteLine();
 WriteLine("17. По двум заданным числам проверять является ли одно квадратом другого");
 
