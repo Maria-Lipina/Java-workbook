@@ -188,6 +188,9 @@ WriteLine("13. Выяснить, кратно ли число заданному
 WriteLine();
 WriteLine("14. Найти третью цифру числа или сообщить, что её нет");
 
+string? number1 = ReadLine();
+SelectDigit(number1, 0);
+
 
 WriteLine();
 WriteLine();// -----------------------------------------------
