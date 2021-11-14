@@ -12,16 +12,13 @@ WriteLine(power);
 WriteLine();
 WriteLine("1. По двум заданным числам проверять является ли первое квадратом второго");
 
-bool IsQuadrat (int x, int y)
+bool IsSquare(int square, int number)
 {
-int z = x*y;
-if (z==x) return true;
-else return false; 
+if (Math.Sqrt(square) == number) return true;
+else return false;
 }
 
-int x1 = ToInt32(ReadLine());
-int x2 = ToInt32(ReadLine());
-WriteLine(IsQuadrat(x1, x2));
+WriteLine(IsSquare(ToInt32(ReadLine()),ToInt32(ReadLine()))); // Рекорд по количеству скобок на строку был побит снова, когда работала над задачей 17 и обнаружила, что она идентична задаче 1)
 
 WriteLine();
 WriteLine("2. Даны два числа. Показать большее и меньшее число");
@@ -226,25 +223,20 @@ WriteLine(Week(ToInt32(ReadLine())));
 WriteLine();
 WriteLine("17. По двум заданным числам проверять является ли одно квадратом другого");
 
-// string IsQuadrat(int arg1, int arg2)
-// {
-// if (arg1*arg2 % arg2 ==0) 
+WriteLine(IsSquare(ToInt32(ReadLine()),ToInt32(ReadLine())));
 
-// return "Является";
 
-// else return "Не является";
-// }
-
-// Console.WriteLine(IsQuadrat(64, 8));
 WriteLine();
 WriteLine("18. Проверить истинность утверждения ¬(X ⋁ Y) = ¬X ⋀ ¬Y");
 
-// bool logic(bool x, bool y)
-// {
-//     return !(x || y) == (!x && !y); //  закон моргана всегда истина. Без скобок == выполняется до &&
-// }
+bool logic(bool x, bool y)
+{
+    return !(x || y) == (!x && !y); //  закон моргана всегда истина. Без скобок == выполняется до &&
+}
 
-// Console.WriteLine(logic(true, true));
+Console.WriteLine(logic(true, true));
+
+
 WriteLine();
 WriteLine("19. Определить номер четверти плоскости, в которой находится точка с координатами Х и У, причем X ≠ 0 и Y ≠ 0");
 
