@@ -281,52 +281,58 @@ WriteLine("22. Найти расстояние между точками в пр
 
 // Почувствуй себя мидлом
 WriteLine();
-WriteLine("23. Показать таблицу квадратов чисел от 1 до N");
+WriteLine("23. Найти квадраты чисел от 1 до N");
 
-int [] Fillarray(int N)
+void PrintPowers(int N, int power)
 {
- int [] array = new int [N+1];
+double [] array = new double [N+1];
 
 for (int i = 1; i < array.Length; i++)
 {
-    array [i-1] = i*i;
-}
- return array;   
+   WriteLine($"{i}^{power} = {Math.Pow(i, power)}");
+} 
 }
 
-PrintArray(Fillarray(5));
+PrintPowers(ToInt32(ReadLine()),2);
+
 
 WriteLine();
 WriteLine("24. Найти кубы чисел от 1 до N");
 
+PrintPowers(ToInt32(ReadLine()),3);
+
 WriteLine();
 WriteLine("25. Найти сумму чисел от 1 до А");
 
-// int Sum (int A)
-// {int sum = 0;
-// for (int i = 1; i < A+1; i++)
-// {
-//     sum = sum + i;
-// }
-// return sum;
-// }
+int Sum (int A)
+{int sum = 0;
+for (int i = 1; i < A+1; i++)
+{
+    sum = sum + i;
+}
+return sum;
+}
 
-// int Sum1 = Sum(10);
-// Console.WriteLine(Sum1);
+WriteLine(Sum(ToInt32(ReadLine())));
+
 
 WriteLine();
 WriteLine("26. Возведите число А в натуральную степень B используя цикл"); 
 
-// int Power (int A, int B)
-// {int result = A;
-// for (int i =1; i < B; i++)
-// {
-//     result = result * A;
-// }
-// return result;
-// }
+int Power (int A, int B)
+{int result = A;
+for (int i = 1; i < B; i++)
+{
+    result = result * A;
+}
+return result;
+}
 
-// Console.WriteLine(Power(2,3));
+WriteLine("A = ");
+int A = ToInt32(ReadLine());
+WriteLine("B = ");
+int B = ToInt32(ReadLine());
+WriteLine(Power(A,B));
 
 
 WriteLine();
