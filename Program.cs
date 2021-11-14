@@ -231,10 +231,31 @@ WriteLine("18. Проверить истинность утверждения ¬
 
 bool logic(bool x, bool y)
 {
-    return !(x || y) == (!x && !y); //  закон моргана всегда истина. Без скобок == выполняется до &&
+    return !(x || y) == (!x && !y); // Без скобок == выполняется до &&
 }
 
-Console.WriteLine(logic(true, true));
+Write("Х - true или false? ");
+bool X = ToBoolean(ReadLine());
+Write("Y - true или false? ");
+bool Y = ToBoolean(ReadLine());
+WriteLine(logic(X, Y));
+
+WriteLine();
+WriteLine("Таблица истинности"); //первая попытка, которая хороша чисто тем, что она есть.
+
+for (int i = 0; i < 2; i++)
+{
+    if (i == 0)
+    {
+       WriteLine("При X - true, начиная с Y - true");
+       WriteLine($"{logic(true, true)} {logic(true, false)}"); 
+    }
+    else
+    {
+        WriteLine("При X - false, начиная с Y - true");
+        WriteLine($"{logic(false, true)} {logic(false, false)}");;
+    }
+}
 
 
 WriteLine();
