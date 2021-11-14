@@ -304,16 +304,25 @@ PrintPowers(ToInt32(ReadLine()),3);
 WriteLine();
 WriteLine("25. Найти сумму чисел от 1 до А");
 
-int Sum (int A)
-{int sum = 0;
-for (int i = 1; i < A+1; i++)
+int [] FillArray1(int A)
 {
-    sum = sum + i;
+int[] collect = new int [A];
+collect [0] = 1;
+for (int pos = 1; pos < collect.Length; pos++) collect[pos] = pos + 1;
+return collect;
+}
+
+int [] A = FillArray1(ToInt32(ReadLine()));
+
+int ArraySum (int[] A)
+{int sum = 0;
+for (int i = 0; i < A.Length; i++)
+{
+    sum = sum + A[i];
 }
 return sum;
 }
-
-WriteLine(Sum(ToInt32(ReadLine())));
+WriteLine(ArraySum(A));
 
 
 WriteLine();
@@ -329,23 +338,23 @@ return result;
 }
 
 WriteLine("A = ");
-int A = ToInt32(ReadLine());
+int A1 = ToInt32(ReadLine());
 WriteLine("B = ");
 int B = ToInt32(ReadLine());
-WriteLine(Power(A,B));
+WriteLine(Power(A1,B));
 
 
 WriteLine();
-WriteLine("27. Определить количество цифр в числе"); 
+WriteLine("27. Определить количество цифр в числе");
 
-int Num = 12893;
+int Num = ToInt32(ReadLine());
+WriteLine(Convert.ToString(Num).Length);
 
-int DigitQuantity(int Num)
-{
-return Convert.ToString(Num).Length;
-}
 
-//Демонстрация, как можно найти ту или иную цифру числа математически: делить число на десять то количество раз, которое соответствует разряду=позиции искомой цифры в числе, от единиц до высшего разряда 
+WriteLine();
+WriteLine("28. Подсчитать сумму цифр в числе");
+
+//Демонстрация от Сергея, как можно найти ту или иную цифру числа математически: делить число на десять то количество раз, которое соответствует разряду=позиции искомой цифры в числе, от единиц до высшего разряда 
 //  n - само число и результаты его деления на 10.
 //  o - остаток при делении числа на 10 - цифра в составе числа.
 // n               o
@@ -356,58 +365,55 @@ return Convert.ToString(Num).Length;
 // 1               2
 // 0               1
 
-int Counter(int n)
+//До: Как Сергей набросал решение задачи 28 а заодно и 27 после демонстрации + я переименовала переменные под себя
+
+// int DigitSum(int n)
+// {
+//     int DigQuantity = 0;
+//     int result = 0;
+//     if (n == 0)
+//     {
+//         DigQuantity = 1;
+//         result = 1;
+//     }
+//     else
+//     {
+//         while (n != 0)
+//         {
+//             int o = n % 10;
+//             result += o; // не совсем ояевидно, но можно догадаться, что полностью строка будет result = result + o
+//             DigQuantity++;
+//             n /= 10;
+//         }
+//     }
+//     return result;
+// }
+// WriteLine(DigitSum(ToInt32(ReadLine())));
+
+// После: А теперь давайте поиграемся массивами и функциями собственного производства
+
+int [] Digits(int n)
 {
-    int res  =0;
-    int s=0;
-    if (n == 0)
-    {
-    res  =1;
-    s=1;
-    }
+    int [] result = new int [Convert.ToString(n).Length];
+    if (n == 0) result [0] = n;
     else
     {
-    while(n!=0)
-    {
-        int o = n%10;
-        s+=o;
-        res++;
-        n/=10;
+        for (int i = 0; i < result.Length; i++)
+        {
+            int o = n % 10;
+            result[i] = o; // не совсем очевидно, но можно догадаться, что полностью строка будет result = result + o
+            n /= 10;
+        }
     }
-    }
-    return s;
+    return result;
 }
-System.Console.WriteLine(Counter(0));
-System.Console.WriteLine(Counter(10));
-System.Console.WriteLine(Counter(23));
-System.Console.WriteLine(Counter(110));
-System.Console.WriteLine(Counter(11023));
-int DG = DigitQuantity(Num);
 
- 
+int [] digits = Digits(ToInt32(ReadLine()));
+PrintArray(digits);
+WriteLine(ArraySum(digits));
+
 WriteLine();
-WriteLine("28. Подсчитать сумму цифр в числе"); 
+WriteLine("29. Написать программу вычисления произведения чисел от 1 до N");
 
-// string [] Fillarray(int Num)
-// {
-// string [] digits = new string [Convert.ToString(Num).Length];
-// string digit = Convert.ToString(Num);
-// for (int i = 0; i < digits.Length; i++)
-// {
-//     digits [i] = digit [0];
-// }
-
-//     return ;
-// }
-
-// void PrintArray(string[] collect)
-// {
-//     for (int pos = 0; pos < collect.Length; pos ++) Console.Write($"{collect[pos]} ");
-//     Console.WriteLine();
-//     Console.WriteLine();
-// }
-
-// PrintArray(digits);
-
-// 29. Написать программу вычисления произведения чисел от 1 до N
-// 30. Показать кубы чисел, заканчивающихся на четную цифру
+WriteLine();
+WriteLine("30. Показать кубы чисел, заканчивающихся на четную цифру");
