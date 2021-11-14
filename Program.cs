@@ -338,47 +338,51 @@ WriteLine(Power(A,B));
 WriteLine();
 WriteLine("27. Определить количество цифр в числе"); 
 
-// int Num = 12893;
+int Num = 12893;
 
-// int DigitQuantity(int Num)
-// {
-// return Convert.ToString(Num).Length;
-// }
+int DigitQuantity(int Num)
+{
+return Convert.ToString(Num).Length;
+}
 
-// n         o
+//Демонстрация, как можно найти ту или иную цифру числа математически: делить число на десять то количество раз, которое соответствует разряду=позиции искомой цифры в числе, от единиц до высшего разряда 
+//  n - само число и результаты его деления на 10.
+//  o - остаток при делении числа на 10 - цифра в составе числа.
+// n               o
 // 12345   
 // 1234            5
 // 123             4
 // 12              3
 // 1               2
 // 0               1
-// int Counter(int n)
-// {
-//     int res  =0;
-//     int s=0;
-//     if (n == 0)
-//     {
-//     res  =1;
-//     s=1;
-//     }
-//     else
-//     {
-//     while(n!=0)
-//     {
-//         int o = n%10;
-//         s+=o;
-//         res++;
-//         n/=10;
-//     }
-//     }
-//     return s;
-// }
-// System.Console.WriteLine(Counter(0));
-// System.Console.WriteLine(Counter(10));
-// System.Console.WriteLine(Counter(23));
-// System.Console.WriteLine(Counter(110));
-// System.Console.WriteLine(Counter(11023));
-// int DG = DigitQuantity(Num);
+
+int Counter(int n)
+{
+    int res  =0;
+    int s=0;
+    if (n == 0)
+    {
+    res  =1;
+    s=1;
+    }
+    else
+    {
+    while(n!=0)
+    {
+        int o = n%10;
+        s+=o;
+        res++;
+        n/=10;
+    }
+    }
+    return s;
+}
+System.Console.WriteLine(Counter(0));
+System.Console.WriteLine(Counter(10));
+System.Console.WriteLine(Counter(23));
+System.Console.WriteLine(Counter(110));
+System.Console.WriteLine(Counter(11023));
+int DG = DigitQuantity(Num);
 
  
 WriteLine();
