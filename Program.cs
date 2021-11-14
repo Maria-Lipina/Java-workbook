@@ -294,14 +294,7 @@ for (int i = 1; i < array.Length; i++)
  return array;   
 }
 
-void PrintArray(int[] collect)
-{
-    for (int pos = 0; pos < collect.Length; pos ++) Console.Write($"{collect[pos]} ");
-    Console.WriteLine();
-    Console.WriteLine();
-}
-
-// PrintArray(Fillarray(5));
+PrintArray(Fillarray(5));
 
 WriteLine();
 WriteLine("24. Найти кубы чисел от 1 до N");
