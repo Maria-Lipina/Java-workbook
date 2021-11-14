@@ -138,7 +138,7 @@ void SelectDigit(string? number, int index)
 {
     int check = Convert.ToInt32(number);
     if(99 < check && check < 1000) Write(number [index]);
-    else {WriteLine("програмка работает только с трехзначными числами"); }
+    else {WriteLine("Не трехзначное число"); }
 }
 
 SelectDigit(ReadLine(), 0);
@@ -196,8 +196,9 @@ WriteLine();
 WriteLine("14. Найти третью цифру числа или сообщить, что её нет");
 
 string? number1 = ReadLine();
-SelectDigit(number1, 0);
-
+int check = ToInt32(number1);
+if (check > 999) Write(number1, 0);
+else {SelectDigit(number1, 0);}
 
 WriteLine();
 WriteLine();// -----------------------------------------------
