@@ -287,16 +287,15 @@ WriteLine("23. Найти квадраты чисел от 1 до N");
 int [] FillArray1(int A)
 {
 int[] collect = new int [A];
-collect [0] = 1;
-for (int pos = 1; pos < collect.Length; pos++) collect[pos] = pos + 1;
+for (int pos = 0; pos < collect.Length; pos++) collect[pos] = pos+1;
 return collect;
 }
 
 void PrintPowers(int [] N, int power)
 {
-for (int i = 1; i < N.Length; i++)
+for (int i = 0; i < N.Length; i++)
 {
-   WriteLine($"{i}^{power} = {Math.Pow(i, power)}");
+   WriteLine($"{N[i]}^{power} = {Math.Pow(N[i], power)}");
 } 
 }
 
@@ -308,22 +307,19 @@ WriteLine("24. Найти кубы чисел от 1 до N");
 
 PrintPowers(FillArray1(ToInt32(ReadLine())),3);
 
-
 WriteLine();
 WriteLine("25. Найти сумму чисел от 1 до А");
 
-int [] A = FillArray1(ToInt32(ReadLine()));
-
 int ArraySum (int[] A)
-{int sum = 0;
-for (int i = 0; i < A.Length; i++)
+{int sum = 1;
+for (int i = 1; i < A.Length; i++)
 {
     sum = sum + A[i];
 }
 return sum;
 }
-WriteLine(ArraySum(A));
 
+WriteLine(ArraySum(FillArray1(ToInt32(ReadLine()))));
 
 WriteLine();
 WriteLine("26. Возведите число А в натуральную степень B используя цикл"); 
@@ -414,25 +410,23 @@ WriteLine(ArraySum(digits));
 
 
 WriteLine();
+WriteLine();
 WriteLine("29. Написать программу вычисления произведения чисел от 1 до N");
 
-int [] A2 = FillArray1(ToInt32(ReadLine()));
-
-int ArrayProduct (int[] A)
-{int prod = 0;
-for (int i = 0; i < A.Length; i++)
+long ArrayProduct (int[] A)
+{long prod = A[0];
+for (int i = 1; i < A.Length; i++)
 {
-    prod = prod * A[i];
+prod = prod * A[i];
 }
 return prod;
 }
-WriteLine(ArrayProduct(A2));
+
+WriteLine(ArrayProduct(FillArray1(ToInt32(ReadLine()))));
+
 
 WriteLine();
 WriteLine("30. Показать кубы чисел, заканчивающихся на четную цифру");
 
 int [] evens = SelectEvens(ToInt32(ReadLine()));
-
-PrintArray(evens);
-
 PrintPowers(evens,3);
