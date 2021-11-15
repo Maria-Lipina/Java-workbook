@@ -306,7 +306,8 @@ PrintPowers(FillArray1(ToInt32(ReadLine())),2);
 WriteLine();
 WriteLine("24. Найти кубы чисел от 1 до N");
 
-PrintPowers(ToInt32(ReadLine()),3);
+PrintPowers(FillArray1(ToInt32(ReadLine())),3);
+
 
 WriteLine();
 WriteLine("25. Найти сумму чисел от 1 до А");
@@ -431,6 +432,7 @@ WriteLine();
 WriteLine("30. Показать кубы чисел, заканчивающихся на четную цифру");
 
 int [] evens = SelectEvens(ToInt32(ReadLine()));
+
 PrintArray(evens);
 
 PrintPowers(evens,3);
