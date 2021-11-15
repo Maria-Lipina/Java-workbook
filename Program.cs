@@ -235,13 +235,13 @@ bool logic(bool x, bool y)
     return !(x || y) == (!x && !y); // Без скобок == выполняется до &&
 }
 
-Write("Х - true или false? ");
-bool X = ToBoolean(ReadLine());
-Write("Y - true или false? ");
-bool Y = ToBoolean(ReadLine());
-WriteLine(logic(X, Y));
+// Write("Х - true или false? ");
+// bool X = ToBoolean(ReadLine());
+// Write("Y - true или false? ");
+// bool Y = ToBoolean(ReadLine());
+// WriteLine(logic(X, Y));
+//WriteLine();
 
-WriteLine();
 WriteLine("Таблица истинности"); //первая попытка, которая хороша чисто тем, что она есть.
 
 for (int i = 0; i < 2; i++)
@@ -284,17 +284,23 @@ WriteLine("22. Найти расстояние между точками в пр
 WriteLine();
 WriteLine("23. Найти квадраты чисел от 1 до N");
 
-void PrintPowers(int N, int power)
+int [] FillArray1(int A)
 {
-double [] array = new double [N+1];
+int[] collect = new int [A];
+collect [0] = 1;
+for (int pos = 1; pos < collect.Length; pos++) collect[pos] = pos + 1;
+return collect;
+}
 
-for (int i = 1; i < array.Length; i++)
+void PrintPowers(int [] N, int power)
+{
+for (int i = 1; i < N.Length; i++)
 {
    WriteLine($"{i}^{power} = {Math.Pow(i, power)}");
 } 
 }
 
-PrintPowers(ToInt32(ReadLine()),2);
+PrintPowers(FillArray1(ToInt32(ReadLine())),2);
 
 
 WriteLine();
@@ -304,14 +310,6 @@ PrintPowers(ToInt32(ReadLine()),3);
 
 WriteLine();
 WriteLine("25. Найти сумму чисел от 1 до А");
-
-int [] FillArray1(int A)
-{
-int[] collect = new int [A];
-collect [0] = 1;
-for (int pos = 1; pos < collect.Length; pos++) collect[pos] = pos + 1;
-return collect;
-}
 
 int [] A = FillArray1(ToInt32(ReadLine()));
 
@@ -331,7 +329,7 @@ WriteLine("26. Возведите число А в натуральную сте
 
 int Power (int A, int B)
 {int result = A;
-for (int i = 1; i < B; i++)
+for (int i = 1; i < B+1; i++)
 {
     result = result * A;
 }
@@ -413,8 +411,26 @@ int [] digits = Digits(ToInt32(ReadLine()));
 PrintArray(digits);
 WriteLine(ArraySum(digits));
 
+
 WriteLine();
 WriteLine("29. Написать программу вычисления произведения чисел от 1 до N");
 
+int [] A2 = FillArray1(ToInt32(ReadLine()));
+
+int ArrayProduct (int[] A)
+{int prod = 0;
+for (int i = 0; i < A.Length; i++)
+{
+    prod = prod * A[i];
+}
+return prod;
+}
+WriteLine(ArrayProduct(A2));
+
 WriteLine();
 WriteLine("30. Показать кубы чисел, заканчивающихся на четную цифру");
+
+int [] evens = SelectEvens(ToInt32(ReadLine()));
+PrintArray(evens);
+
+PrintPowers(evens,3);
