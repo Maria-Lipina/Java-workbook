@@ -275,7 +275,45 @@ WriteLine("20. Задать номер четверти, показать диа
 WriteLine();
 WriteLine("21. Программа проверяет пятизначное число на палиндромом.");
 WriteLine();
-WriteLine("22. Найти расстояние между точками в пространстве 2D/3D");
+
+int tocheck = 12321;
+
+int [] digits = Digits(paltocheck);
+PrintArray(digits);
+
+bool Palindrome (int [] digits)
+{
+bool compare1 = digits[0] == digits[digits.Length];
+bool compare2 = digits[1] == digits[digits.Length-1];
+
+return compare1 && compare2;
+}
+
+WriteLine();
+WriteLine("22. Найти расстояние между точками в пространстве 2D/3D"); // Адаптировать так, чтобы можно было выбирать 2 точки или три. Так, чтобы вся задача решалась одним методом, а не двумя
+
+int[] dot(int Min, int Max)
+{
+    int dot1 = new Random().Next(Min, Max);
+    int dot2 = new Random().Next(Min, Max);
+    int[] result = {dot1, dot2};
+    return result;
+}
+
+int[] x = dot(0, 20);
+WriteLine(PrintMyArray(x));
+int[] y = dot(0, 20);
+WriteLine(PrintMyArray(y));
+int[] z = dot(0, 20);
+WriteLine(PrintMyArray(z));
+
+double distance(int[] x, int[] y, int[] z)
+{
+    return Math.Sqrt(Math.Pow((x[1] - x[0]),2) + Math.Pow((y[1] - y[0]),2)+ Math.Pow((z[1] - z[0]),2));
+}
+
+double dist = distance(x, y, z);
+WriteLine(dist);
 
 
 //----------------------- Задачи, которые добавилмсь на семинаре 11.11.2021
