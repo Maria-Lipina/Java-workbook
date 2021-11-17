@@ -81,7 +81,7 @@ int num = ToInt32(ReadLine());
 int num1 = ToInt32(ReadLine());
 int num2 = ToInt32(ReadLine());
 
-int max = num1;
+int max = num;
 if (num1 > max) max = num1;
 if (num2 > max) max = num2;
 Console.WriteLine(max);
@@ -279,22 +279,32 @@ for (int i = 0; i < 2; i++)
     }
 }
 
-
 WriteLine();
 WriteLine("19. Определить номер четверти плоскости, в которой находится точка с координатами Х и У, причем X ≠ 0 и Y ≠ 0");
 
-int[] dot(int Min, int Max)
-{
-    int x = new Random().Next(Min, Max);
-    int y = new Random().Next(Min, Max);
-    int[] result = {x, y};
-    return result;
+int Min = -100;
+int Max = 100;
+
+int [] RandomDot (int D, int range) //range - четверть или октант.
+{int [] dot = CreateMyArray(D);
+if (D == 2 || D == 3)
+{   
+    // для определения х
+    if (range == 1 || range == 4 || range == 5 || range == 8) dot [0] = new Random().Next(0, Max);
+    if (range == 2 || range == 3 || range == 6 || range == 7) dot [0] = new Random().Next(Min, 0);
+    //для определения у
+    if (range == 1 || range == 2 || range == 5 || range == 6) dot [1] = new Random().Next(0, Max);
+    if (range == 3 || range == 4 || range == 7 || range == 8) dot [1] = new Random().Next(Min, 0);
+}
+ if (D == 3)
+ {  //для определения z
+    if (range == 1 || range == 2 || range == 3 || range == 4) dot [2] = new Random().Next(0, Max);
+    if (range == 5 || range == 6 || range == 7 || range == 8) dot [2] = new Random().Next(Min, 0);
+ }
+return dot;
 }
 
-int [] Dot = dot (-11, 11);
-WriteLine(PrintMyArray (Dot));
-
-int Quarter (int [] dot)
+int range (int [] dot)
 {
 switch (dot[0], dot[1])
 {
@@ -305,34 +315,27 @@ case (> 0, < 0): return 4;
 default: return 0;
 };
 }
-WriteLine(Quarter(Dot));
 
-// if (x > 0 && y > 0) Console.WriteLine(1);
-// if (x < 0 && y > 0) Console.WriteLine(2);
-// if (x < 0 && y < 0) Console.WriteLine(3);
-// if (x > 0 && y < 0) Console.WriteLine3(4);
+int [] Dottocheck = RandomDot(2, 2);
+WriteLine(range(Dottocheck));
+
 
 WriteLine();
 WriteLine("20. Задать номер четверти, показать диапазоны для возможных координат");
 
-int quart = 1;
+string ShowRange (int range)
+{string Show = $"В четверти {range} Х принимает значения";
 
-int [] Range (int quarter)
-{
-int Min = 0;
-int Max = 0;
-int [] result = {Min, Max};
-
-if (quarter == 1) 
-{Min = 0; Max = 101; return result;} // Здесь все неправильно, но мне нужен отдых
-if (quarter == 2) 
-{Min = -100; Max = 101; return result;}
-if (quarter == 3) 
-{Min = -100; Max = -100; return result;}
-if (quarter == 4) 
-{Min = -100; Max = -100; return result;}
+   // для определения х
+    if (range == 1 || range == 4) Show += $" положительных чисел от 0 до {Max}. Y принимает значения";
+    if (range == 2 || range == 3) Show += $" отрицательных чисел от {Min} до 0. Y принимает значения";
+    //для определения у
+    if (range == 1 || range == 2) Show += $" положительных чисел от 0 до {Max}.";
+    if (range == 3 || range == 4) Show += $" отрицательных чисел от {Min} до 0.";
+return Show;
 }
-Range(quart);
+WriteLine(ShowRange(4));
+
 
 WriteLine();
 WriteLine("21. Программа проверяет пятизначное число на палиндром."); //черновой вариант
@@ -351,22 +354,25 @@ PrintArray(digits);
 WriteLine(Palindrome(digits));
 
 WriteLine();
-WriteLine("22. Найти расстояние между точками в пространстве 2D/3D"); // Адаптировать так, чтобы можно было выбирать 2 точки или три. Так, чтобы вся задача решалась одним методом, а не двумя
+WriteLine("22. Найти расстояние между точками в пространстве 2D/3D");
 
-int[] x1 = dot(0, 20);
-WriteLine(PrintMyArray(x1));
-int[] y = dot(0, 20);
-WriteLine(PrintMyArray(y));
-int[] z = dot(0, 20);
-WriteLine(PrintMyArray(z));
+int [] DotA = RandomDot(3, 1);
+WriteLine (PrintMyArray(DotA));
 
-double distance(int[] x, int[] y, int[] z)
-{
-    return Math.Sqrt(Math.Pow((x[1] - x[0]),2) + Math.Pow((y[1] - y[0]),2)+ Math.Pow((z[1] - z[0]),2));
-}
+int [] DotB = RandomDot(3, 7);
+WriteLine (PrintMyArray(DotB));
 
-double dist = distance(x1, y, z);
-WriteLine(dist);
+int [] DotC = RandomDot(3, 5);
+WriteLine (PrintMyArray(DotC));
+
+// double distance(int[] x, int[] y, int[] z)
+// {
+//     return Math.Sqrt(Math.Pow((x[1] - x[0]),2) + Math.Pow((y[1] - y[0]),2)+ Math.Pow((z[1] - z[0]),2));
+// }
+
+// double dist = distance(x1, y, z);
+// WriteLine(dist);
+
 
 
 //----------------------- Задачи, которые добавилмсь на семинаре 11.11.2021
