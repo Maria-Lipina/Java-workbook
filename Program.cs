@@ -2,6 +2,27 @@
 using static System.Convert;
 using System;
 
+int[] CreateMyArray(int length)
+{
+    return new int[length];
+}
+
+void FillMyArray(int[] collection, int minValue, int maxValue) // А тут войд можно и нужно, потому что метод только заполняет
+{
+    for (int i = 0; i < collection.Length; i++)
+    {
+        collection[i] = new Random().Next(minValue, maxValue + 1);
+    }
+}
+
+string PrintMyArray(int[] collect)
+{
+    string outputString = String.Empty;
+    for (int pos = 0; pos < collect.Length; pos++) outputString += $"{collect[pos]} ";
+    return outputString;
+}
+//-----------------------------------
+
 // // Почувствуй себя интерном (семинар 04.11.2021)
 WriteLine("0. Вывести квадрат числа");
 
@@ -197,7 +218,7 @@ WriteLine("14. Найти третью цифру числа или сообщи
 
 string? number1 = ReadLine();
 int check = ToInt32(number1);
-if (check > 999) Write(number1, 0);
+if (check > 999) WriteLine(number1, 0);
 else {SelectDigit(number1, 0);}
 
 WriteLine();
@@ -262,25 +283,60 @@ for (int i = 0; i < 2; i++)
 WriteLine();
 WriteLine("19. Определить номер четверти плоскости, в которой находится точка с координатами Х и У, причем X ≠ 0 и Y ≠ 0");
 
-// int x = 1;
-// int y = -1;
+int[] dot(int Min, int Max)
+{
+    int x = new Random().Next(Min, Max);
+    int y = new Random().Next(Min, Max);
+    int[] result = {x, y};
+    return result;
+}
+
+int [] Dot = dot (-11, 11);
+WriteLine(PrintMyArray (Dot));
+
+int Quarter (int [] dot)
+{
+switch (dot[0], dot[1])
+{
+case (> 0, > 0): return 1;
+case (< 0, > 0): return 2;
+case (< 0, < 0): return 3;
+case (> 0, < 0): return 4;
+default: return 0;
+};
+}
+WriteLine(Quarter(Dot));
 
 // if (x > 0 && y > 0) Console.WriteLine(1);
-// if (x > 0 && y < 0) Console.WriteLine(4);
+// if (x < 0 && y > 0) Console.WriteLine(2);
 // if (x < 0 && y < 0) Console.WriteLine(3);
-// if (x < 0 && y > 0) Console.WriteLine3(3);
+// if (x > 0 && y < 0) Console.WriteLine3(4);
 
 WriteLine();
 WriteLine("20. Задать номер четверти, показать диапазоны для возможных координат");
+
+int quart = 1;
+
+int [] Range (int quarter)
+{
+int Min = 0;
+int Max = 0;
+int [] result = {Min, Max};
+
+if (quarter == 1) 
+{Min = 0; Max = 101; return result;} // Здесь все неправильно, но мне нужен отдых
+if (quarter == 2) 
+{Min = -100; Max = 101; return result;}
+if (quarter == 3) 
+{Min = -100; Max = -100; return result;}
+if (quarter == 4) 
+{Min = -100; Max = -100; return result;}
+}
+Range(quart);
+
 WriteLine();
-
-WriteLine("21. Программа проверяет пятизначное число на палиндромом."); //черновой вариант
+WriteLine("21. Программа проверяет пятизначное число на палиндром."); //черновой вариант
 WriteLine();
-
-int tocheck = 12321;
-
-int [] digits = Digits(paltocheck);
-PrintArray(digits);
 
 bool Palindrome (int [] digits)
 {
@@ -289,20 +345,16 @@ bool compare2 = digits[1] == digits[digits.Length-1];
 
 return compare1 && compare2;
 }
+int tocheck = 12321;
+int [] digits = Digits(tocheck);
+PrintArray(digits);
+WriteLine(Palindrome(digits));
 
 WriteLine();
 WriteLine("22. Найти расстояние между точками в пространстве 2D/3D"); // Адаптировать так, чтобы можно было выбирать 2 точки или три. Так, чтобы вся задача решалась одним методом, а не двумя
 
-int[] dot(int Min, int Max)
-{
-    int dot1 = new Random().Next(Min, Max);
-    int dot2 = new Random().Next(Min, Max);
-    int[] result = {dot1, dot2};
-    return result;
-}
-
-int[] x = dot(0, 20);
-WriteLine(PrintMyArray(x));
+int[] x1 = dot(0, 20);
+WriteLine(PrintMyArray(x1));
 int[] y = dot(0, 20);
 WriteLine(PrintMyArray(y));
 int[] z = dot(0, 20);
@@ -313,7 +365,7 @@ double distance(int[] x, int[] y, int[] z)
     return Math.Sqrt(Math.Pow((x[1] - x[0]),2) + Math.Pow((y[1] - y[0]),2)+ Math.Pow((z[1] - z[0]),2));
 }
 
-double dist = distance(x, y, z);
+double dist = distance(x1, y, z);
 WriteLine(dist);
 
 
@@ -443,9 +495,9 @@ int [] Digits(int n)
     return result;
 }
 
-int [] digits = Digits(ToInt32(ReadLine()));
-PrintArray(digits);
-WriteLine(ArraySum(digits));
+int [] digs = Digits(ToInt32(ReadLine()));
+PrintArray(digs);
+WriteLine(ArraySum(digs));
 
 
 WriteLine();
@@ -475,29 +527,9 @@ PrintPowers(evens,3);
 
 WriteLine();
 WriteLine("31. Задать массив из 8 элементов и вывести их на экран");
-//Решение от Сергея: Друзья, в задаче 31 перед вами целых 3 подзадачи, и на каждую хорошо бы иметь свой метод.
-int[] CreateMyArray(int length)
-{
-    return new int[length];
-}
-
-void FillArray(int[] collection, int minValue, int maxValue) // А тут войд можно и нужно, потому что метод только заполняет
-{
-    for (int i = 0; i < collection.Length; i++)
-    {
-        collection[i] = new Random().Next(minValue, maxValue + 1);
-    }
-}
-
-string PrintMyArray(int[] collect)
-{
-    string outputString = String.Empty;
-    for (int pos = 0; pos < collect.Length; pos++) outputString += $"{collect[pos]} ";
-    return outputString;
-}
-
+//Решение от Сергея: Друзья, в задаче 31 перед вами целых 3 подзадачи, и на каждую хорошо бы иметь свой метод. Все методы вынесены в самое начало файла перед задачей 0.
 int[] arr = CreateMyArray(8);
-FillArray(arr, 10, 100);
+FillMyArray(arr, 10, 100);
 string res = PrintMyArray(arr); WriteLine(res);
 
 //---------------------------------------------------------------------
@@ -509,7 +541,7 @@ string res = PrintMyArray(arr); WriteLine(res);
 //     return collect;
 // }
 
-// void PrintArray(int[] collect) - плохо, потому что войд
+// void PrintArray(int[] collect) - плохо, потому что войд и потому что тут консоль
 // {
 //     for (int pos = 0; pos < collect.Length; pos++) Console.Write($"{collect[pos]} ");
 //     Console.WriteLine();
@@ -521,14 +553,14 @@ WriteLine();
 WriteLine("32. Задать массив из 8 элементов, заполненных нулями и единицами вывести их на экран ");
 
 int[] arr1 = CreateMyArray(8);
-FillArray(arr, 0, 1);
+FillMyArray(arr, 0, 1);
 WriteLine(PrintMyArray(arr1));
 
 WriteLine();
 WriteLine("33. Задать массив из 12 элементов, заполненных числами из [-9,9]. Найти сумму положительных/отрицательных элементов массива");
 
 int[] arr2 = CreateMyArray(12);
-FillArray(arr, -9, 9);
+FillMyArray(arr, -9, 9);
 WriteLine(PrintMyArray(arr2));
 
 int[] SelectBySign (int[] array, int sign)
@@ -549,24 +581,21 @@ for (int i = 0; i<= result.Length; i++)
 }
 Array.Resize(ref result, len);
 return result;
-break;
 
 case > 0:
     for (int i = 0; i<= result.Length; i++)
-    {
+{
     if (array[i] > 0)
     {
     result [len] = array[i];
     len++;
     }
-    }
+}
 Array.Resize(ref result, len);
 return result;
-break;
 
-case == 0:
+case 0:
 return array;
-break;
 };
 }
 
@@ -579,6 +608,7 @@ int SignedSum = ArraySum(signed);
 WriteLine(SignedSum);
 int UnsignedSum = ArraySum(unsigned);
 WriteLine(UnsignedSum);
+
 
 
 // WriteLine();
