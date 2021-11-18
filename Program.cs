@@ -638,8 +638,25 @@ WriteLine(UnsignedSum);
 
 
 
-// WriteLine();
-// WriteLine("34. Написать программу замену элементов массива на противоположные");
+WriteLine();
+WriteLine("34. Написать программу замену элементов массива на противоположные");
+
+int [] ChangeSign(int [] array)
+{
+    int [] array1 = new int [array.Length];
+    for (int i = 0; i < array.Length; i++)
+    {
+        array1[i] = -array[i];
+    }
+return array1;
+}
+
+int [] A4 = CreateMyArray(10);
+FillMyArray(A4, 0, 100);
+WriteLine(PrintMyArray(A4));
+WriteLine();
+int [] B4 = ChangeSign(A4);
+WriteLine(PrintMyArray(B4));
 
 // WriteLine();
 // WriteLine("35. Определить, присутствует ли в заданном массиве, некоторое число");
