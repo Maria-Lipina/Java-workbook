@@ -658,8 +658,27 @@ WriteLine();
 int [] B4 = ChangeSign(A4);
 WriteLine(PrintMyArray(B4));
 
-// WriteLine();
-// WriteLine("35. Определить, присутствует ли в заданном массиве, некоторое число");
+
+WriteLine();
+WriteLine("35. Определить, присутствует ли в заданном массиве некоторое число");
+
+int [] A5 = CreateMyArray(15);
+FillMyArray(A5, 0, 5);
+WriteLine(PrintMyArray(A5));
+WriteLine();
+
+int Find (int N, int [] array)
+{
+    int i = -1;
+    while (i+1 < array.Length)
+    {
+    if (array [i+1] == N) break;
+    else i++;
+    }
+return i+1;
+}
+int tofind = 3;
+WriteLine($"Индекс искомого элемента ({tofind}) в массиве: {Find(tofind, A5)}");
 
 // WriteLine();
 // WriteLine("36. Задать массив, заполнить случайными положительными трёхзначными числами. Показать количество нечетных и четных чисел");
