@@ -9,7 +9,7 @@ int[] CreateMyArray(int length)
 
 void FillMyArray(int[] collection, int minValue, int maxValue) // А тут войд можно и нужно, потому что метод только заполняет
 {
-    for (int i = 0; i < collection.Length; i++)
+    for (int i = 0; i <= collection.Length; i++)
     {
         collection[i] = new Random().Next(minValue, maxValue + 1);
     }
@@ -18,7 +18,7 @@ void FillMyArray(int[] collection, int minValue, int maxValue) // А тут во
 string PrintMyArray(int[] collect)
 {
     string outputString = String.Empty;
-    for (int pos = 0; pos < collect.Length; pos++) outputString += $"{collect[pos]} ";
+    for (int pos = 0; pos <= collect.Length; pos++) outputString += $"{collect[pos]} ";
     return outputString;
 }
 //-----------------------------------
@@ -91,7 +91,7 @@ WriteLine("5. Написать программу вычисления знач�
 
 double sin(double a)
 {
-    return Math.Asin(a); //тот самый момент когда код работает, но как? Непонятно
+    return Math.Sin(a);
 }
 
 double a = sin(ToDouble(ReadLine()));
@@ -111,9 +111,9 @@ WriteLine("7. Показать числа от -N до N");
 
 void PrintArray(int[] collect)
 {
-    for (int pos = 0; pos < collect.Length; pos ++) Write($"{collect[pos]} ");
+    for (int pos = 0; pos <= collect.Length; pos ++) Write($"{collect[pos]} ");
     WriteLine();
-    WriteLine();
+    WriteLine(); //История должна помнить и неудачные методы.
 }
 
 int [] FillArray(int N)
