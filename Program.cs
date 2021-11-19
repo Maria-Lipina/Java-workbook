@@ -683,7 +683,7 @@ int [] A6 = CreateMyArray(15);
 FillMyArray(A6, 100, 999);
 WriteLine(PrintMyArray(A5));
 
-int Count(int [] array, int crat) // criterion == 1 для нечетных и == 2 для четных
+int Count(int [] array, int crat) // criterion == 1 для нечетных и == 2 для четных, 1099 для входящих в диапазон 10-99 
 {
     int result = 0;
     int i = 0;
@@ -691,6 +691,7 @@ int Count(int [] array, int crat) // criterion == 1 для нечетных и =
     {
     if (crat == 1 && array[i] % 2 != 0) result++;
     if (crat == 2 && array[i] % 2 == 0) result++;
+    if ((crat == 1099) & (array[i] > 9) & (array[i] < 100)) result++;
     }
 return result;
 }
@@ -699,9 +700,13 @@ WriteLine(Count(A6, 2));
 WriteLine(Count(A6, 1));
 
 
+WriteLine();
+WriteLine("37. В одномерном массиве из 123 чисел найти количество элементов из отрезка [10,99]");
 
-// WriteLine();
-// WriteLine("37. В одномерном массиве из 123 чисел найти количество элементов из отрезка [10,99]");
+int [] A7 = CreateMyArray(123);
+FillMyArray(A7, 0, 130);
+WriteLine(PrintMyArray(A7));
+WriteLine(Count(A7, 1099));
 
 // WriteLine();
 // WriteLine("38. Найти сумму чисел одномерного массива стоящих на нечетной позиции");
