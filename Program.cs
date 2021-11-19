@@ -732,8 +732,32 @@ int [] B8 = OddIndex (A8);
 WriteLine(PrintMyArray(B8));
 WriteLine(ArraySum(B8)); //не тестила c arraysum, конечно, но должно работать.
 
-// WriteLine();
-// WriteLine("39. Найти произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д.");
+
+WriteLine();
+WriteLine("39. Найти произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д.");
+
+// int [] A9 = null;
+// Array.Resize(ref A9, 15); // потому что так, оказывается можно, хоть и непонятно, как убрать предупрежденние компилятора, сделать этот массив nullable.
+
+int [] A9 = CreateMyArray(16);
+FillMyArray(A9, 0, 10);
+WriteLine(PrintMyArray(A9));
+
+int [] PairsProd (int [] array)
+{
+    int mid = array.Length / 2;
+    int [] result = new int [mid];
+    for (int i =0; i < mid; i++)
+    {
+    result[i] = array[i] * array[array.Length-1-i];
+    WriteLine($"{result[i]} = {array[i]} * {array[array.Length-1-i]}"); //здесь должен быть цикл в цикле конечно... но не сегодня. так тоже красиво
+    }
+return result;
+}
+
+int [] B9 = PairsProd(A9);
+
+//WriteLine(PrintMyArray(B9));
 
 // WriteLine();
 // WriteLine("40. В Указанном массиве вещественных чисел найдите разницу между максимальным и минимальным элементом");
