@@ -359,17 +359,17 @@ WriteLine("22. Найти расстояние между точками в пр
 int [] DotA = RandomDot(3, 1);
 WriteLine (PrintMyArray(DotA));
 
-int [] DotB = RandomDot(3, 7);
+int [] DotB = RandomDot(3, 1);
 WriteLine (PrintMyArray(DotB));
 
-// int [] DotA = RandomDot(3, 1);
-// WriteLine (PrintMyArray(DotA));
+// int [] A3 = {4, 5, 9};
+// int [] B3 = {7, 2, 4};
 
-// int [] DotB = RandomDot(3, 1);
-// WriteLine (PrintMyArray(DotB));
+//A x   y   z
+//  4   5   9   
 
-int [] A3 = {10, 4};
-int [] B3 = {19, 1};
+//B x   y   z
+//  7   2   4
 
 
 double distance(int D, int[] A, int[] B)
@@ -377,23 +377,18 @@ double distance(int D, int[] A, int[] B)
 double distance = 0;
 if (D == 2) 
 {
-    distance = Math.Sqrt(Math.Pow((B[0] - A[0]),2) + Math.Pow((B[1] - A[1]),2));
+   return distance = Math.Sqrt(Math.Pow((B[0] - A[0]),2) + Math.Pow((B[1] - A[1]),2));
 }
 if (D == 3) 
 {
-    distance = Math.Sqrt(Math.Pow((B[0] - A[0]),2) + Math.Pow((B[1] - A[1]),2)+ Math.Pow((B[2] - A[2]),2));
+   return distance = Math.Sqrt(Math.Pow((B[0] - A[0]),2) + Math.Pow((B[1] - A[1]),2)+ Math.Pow((B[2] - A[2]),2));
 }
 return distance;
 }
 
-double dist = distance(2, A3, B3);
+double dist = distance(2, DotA, DotB);
 WriteLine(dist);
 
-//A x   y   z
-//  4   5   9   
-
-//B x   y   z
-//  7   2   4
 
 
 //----------------------- Задачи, которые добавилмсь на семинаре 11.11.2021
