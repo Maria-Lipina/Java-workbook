@@ -708,8 +708,29 @@ FillMyArray(A7, 0, 130);
 WriteLine(PrintMyArray(A7));
 WriteLine(Count(A7, 1099));
 
-// WriteLine();
-// WriteLine("38. Найти сумму чисел одномерного массива стоящих на нечетной позиции");
+WriteLine();
+WriteLine("38. Найти сумму чисел одномерного массива стоящих на нечетной позиции");
+
+int [] A8 = CreateMyArray(16);
+FillMyArray(A8, 0, 50);
+WriteLine(PrintMyArray(A8));
+
+int [] OddIndex (int [] array)
+{
+    int [] result = new int [array.Length];
+    int len = 0;
+    for (int i = 1; i < array.Length; i+=2)
+    {
+        result[len] = array[i];
+        len++;
+    }
+Array.Resize(ref result, len);
+return result;
+}
+
+int [] B8 = OddIndex (A8);
+WriteLine(PrintMyArray(B8));
+WriteLine(ArraySum(B8)); //не тестила c arraysum, конечно, но должно работать.
 
 // WriteLine();
 // WriteLine("39. Найти произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д.");
