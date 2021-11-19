@@ -675,8 +675,29 @@ return i+1;
 int tofind = 3;
 WriteLine($"Индекс искомого элемента ({tofind}) в массиве: {Find(tofind, A5)}");
 
-// WriteLine();
-// WriteLine("36. Задать массив, заполнить случайными положительными трёхзначными числами. Показать количество нечетных и четных чисел");
+
+WriteLine();
+WriteLine("36. Задать массив, заполнить случайными положительными трёхзначными числами. Показать количество нечетных и четных чисел");
+
+int [] A6 = CreateMyArray(15);
+FillMyArray(A6, 100, 999);
+WriteLine(PrintMyArray(A5));
+
+int Count(int [] array, int crat) // criterion == 1 для нечетных и == 2 для четных
+{
+    int result = 0;
+    int i = 0;
+    for (i = 0; i < array.Length; i++)
+    {
+    if (crat == 1 && array[i] % 2 != 0) result++;
+    if (crat == 2 && array[i] % 2 == 0) result++;
+    }
+return result;
+}
+
+WriteLine(Count(A6, 2));
+WriteLine(Count(A6, 1));
+
 
 
 // WriteLine();
