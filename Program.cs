@@ -9,7 +9,7 @@ int[] CreateMyArray(int length)
 
 void FillMyArray(int[] collection, int minValue, int maxValue) // А тут войд можно и нужно, потому что метод только заполняет
 {
-    for (int i = 0; i <= collection.Length; i++)
+    for (int i = 0; i < collection.Length; i++)
     {
         collection[i] = new Random().Next(minValue, maxValue + 1);
     }
@@ -18,7 +18,7 @@ void FillMyArray(int[] collection, int minValue, int maxValue) // А тут во
 string PrintMyArray(int[] collect)
 {
     string outputString = String.Empty;
-    for (int pos = 0; pos <= collect.Length; pos++) outputString += $"{collect[pos]} ";
+    for (int pos = 0; pos < collect.Length; pos++) outputString += $"{collect[pos]} ";
     return outputString;
 }
 //-----------------------------------
@@ -674,6 +674,7 @@ return i+1;
 }
 int tofind = 3;
 WriteLine($"Индекс искомого элемента ({tofind}) в массиве: {Find(tofind, A5)}");
+//https://docs.microsoft.com/en-us/dotnet/api/system.array.binarysearch?view=net-6.0 - насколько метод здесь подойдет для решения задачи?(вопрос себе)
 
 
 WriteLine();
@@ -750,14 +751,30 @@ int [] PairsProd (int [] array)
     for (int i =0; i < mid; i++)
     {
     result[i] = array[i] * array[array.Length-1-i];
-    WriteLine($"{result[i]} = {array[i]} * {array[array.Length-1-i]}"); //здесь должен быть цикл в цикле конечно... но не сегодня. так тоже красиво
+    WriteLine($"{result[i]} = {array[i]} * {array[array.Length-1-i]}"); //здесь должен быть цикл в цикле конечно и wrileline убрать... но не сегодня.
     }
 return result;
 }
 
 int [] B9 = PairsProd(A9);
-
-//WriteLine(PrintMyArray(B9));
+WriteLine(PrintMyArray(B9));
 
 // WriteLine();
 // WriteLine("40. В Указанном массиве вещественных чисел найдите разницу между максимальным и минимальным элементом");
+
+
+WriteLine("47. Написать программу копирования массива");
+
+int [] cheat = CreateMyArray(15);
+FillMyArray(cheat, 0, 50);
+WriteLine(PrintMyArray(cheat));
+
+int [] cheat1 = CreateMyArray(15);
+Array.Copy(cheat, cheat1, cheat.Length); //Оказывается, так тоже можно.
+WriteLine(PrintMyArray(cheat1));
+
+// int value = 5;
+// Array.Fill(cheat, value);
+// WriteLine(PrintMyArray(cheat));
+// Array.Fill(cheat, new Random().Next(0, 51));
+// WriteLine(PrintMyArray(cheat)); //Заполняет одним и тем же рандомным числом. Где и когда это может быть полезно? 
