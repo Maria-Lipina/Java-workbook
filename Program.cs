@@ -770,11 +770,11 @@ FillMyArray(cheat, 0, 50);
 WriteLine(PrintMyArray(cheat));
 
 int [] cheat1 = CreateMyArray(15);
-Array.Copy(cheat, cheat1, cheat.Length); //Оказывается, так тоже можно.
+Array.Copy(cheat, cheat1, cheat.Length); //Оказывается, так тоже можно. Спасибо, справка по c#
 WriteLine(PrintMyArray(cheat1));
 
 // int value = 5;
 // Array.Fill(cheat, value);
 // WriteLine(PrintMyArray(cheat));
 // Array.Fill(cheat, new Random().Next(0, 51));
-// WriteLine(PrintMyArray(cheat)); //Заполняет одним и тем же рандомным числом. Где и когда это может быть полезно? 
+// WriteLine(PrintMyArray(cheat)); //Заполняет одним и тем же числом. Где и когда это может быть полезно? (вопрос себе)
