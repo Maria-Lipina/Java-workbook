@@ -867,5 +867,41 @@ WriteLine(PrintMyArray(cheat1));
 
 WriteLine("42. Определить сколько чисел больше 0 введено с клавиатуры");
 
+WriteLine();
 WriteLine("48. Показать двумерный массив размером m×n заполненный целыми числами");
 
+int[,] Create2DArray(int rows, int columns)
+{
+    return new int[rows, columns];
+}
+
+void Fill2DArray(int [,] collection, int minValue, int maxValue)
+{
+    for (int i = 0; i < collection.GetLength(0); i++)
+    {
+        for (int j = 0; j < collection.GetLength(1); j++)
+        {
+       collection[i, j] = new Random().Next(minValue, maxValue + 1);  
+        }
+        
+    }
+}
+
+string Print2DArray(int [,] collection)
+{
+    string outputString = String.Empty;
+    int paragraph = 0x00A; //шестнадцатеричный код абзаца в юникоде
+    for (int i = 0; i < collection.GetLength(0); i++)
+    {
+    for (int j = 0; j < collection.GetLength(1); j++)
+    {
+    outputString += $"{collection[i, j]} | ";
+    }
+    outputString += Convert.ToChar(paragraph);
+    }
+    return outputString;
+}
+
+int[,] A = Create2DArray(6, 10);
+Fill2DArray(A, 0, 100);
+WriteLine(Print2DArray(A));
