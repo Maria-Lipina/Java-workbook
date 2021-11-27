@@ -945,4 +945,21 @@ double [,] mn = Create2DArrOfReals(6, 10);
 FillwithReals(mn);
 WriteLine(Print2DArrOfReals(mn));
 
+WriteLine();
+WriteLine("50. В двумерном массиве n×k заменить четные элементы на противоположные");
 
+void ChangeSignforEvens (int [,] collection)
+{
+for (int i = 0; i < collection.GetLength(0); i++)
+{
+  for (int j = 0; j < collection.GetLength(1); j++)
+  {
+    if (collection [i,j] % 2 == 0) collection[i,j] = -collection[i,j];
+  }  
+}
+}
+
+int[,] nk = Create2DArray(6, 10);
+Fill2DArray(nk, 0, 100);
+ChangeSignforEvens(nk);
+WriteLine(Print2DArray(nk));
