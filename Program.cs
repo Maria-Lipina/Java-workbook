@@ -893,7 +893,7 @@ string Print2DArray(int [,] collection)
     int paragraph = 0x00A; //шестнадцатеричный код абзаца в юникоде
     for (int i = 0; i < collection.GetLength(0); i++)
     {
-    for (int j = 0; j < collection.GetLength(1); j++)
+    for (int j = 0; j < collection.GetLength(1); j++) // И помни, что длина строки определяется количеством столбцов. И наоборот длина столбца определяется количеством строк.
     {
     outputString += $"{collection[i, j]} | ";
     }
@@ -905,3 +905,6 @@ string Print2DArray(int [,] collection)
 int[,] A = Create2DArray(6, 10);
 Fill2DArray(A, 0, 100);
 WriteLine(Print2DArray(A));
+
+WriteLine();
+WriteLine("49. Показать двумерный массив размером m×n заполненный вещественными числами");
