@@ -963,3 +963,5 @@ int[,] nk = Create2DArray(6, 10);
 Fill2DArray(nk, 0, 100);
 ChangeSignforEvens(nk);
 WriteLine(Print2DArray(nk));
+
+// TODO: Разделить потом на подпроекты в отдельном репозитории
