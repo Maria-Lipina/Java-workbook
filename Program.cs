@@ -908,3 +908,41 @@ WriteLine(Print2DArray(A));
 
 WriteLine();
 WriteLine("49. Показать двумерный массив размером m×n заполненный вещественными числами");
+
+double[,] Create2DArrOfReals(int rows, int columns)
+{
+    return new double[rows, columns];
+}
+
+void FillwithReals(double[,] collection)
+{
+    for (int i = 0; i < collection.GetLength(0); i++)
+    {
+        for (int j = 0; j < collection.GetLength(1); j++)
+        {
+            collection[i, j] = Math.Round(new Random().NextDouble(), 3, MidpointRounding.AwayFromZero);
+        }
+
+    }
+}
+
+string Print2DArrOfReals(double[,] collection)
+{
+    string outputString = String.Empty;
+    int paragraph = 0x00A; //шестнадцатеричный код абзаца в юникоде
+    for (int i = 0; i < collection.GetLength(0); i++)
+    {
+        for (int j = 0; j < collection.GetLength(1); j++)
+        {
+            outputString += $"{collection[i, j]} | ";
+        }
+        outputString += Convert.ToChar(paragraph);
+    }
+    return outputString;
+}
+
+double [,] mn = Create2DArrOfReals(6, 10);
+FillwithReals(mn);
+WriteLine(Print2DArrOfReals(mn));
+
+
