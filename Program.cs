@@ -445,7 +445,7 @@ long SumNA(int A)
     }
     return sum;
 }
-DateTime DT = DateTime.Now; // Колхозный таймер выполнения программы от Сергея
+DateTime DT = DateTime.Now; // Колхозный секундомер времени, за которое выполняется программа, от Сергея
 Console.WriteLine(SumNA(1_000_000_000));
 System.Console.WriteLine((DateTime.Now - DT).TotalMilliseconds);
 
@@ -456,7 +456,7 @@ long SumNAProg(long A)
 
 //DateTime DTProg = DateTime.Now;
 Stopwatch sw = new Stopwatch();
-sw.Start(); // Более точный и применяемый таймер для тех же целей.
+sw.Start(); // Более точный и применяемый секундомер для тех же целей.
 Console.WriteLine(SumNAProg(1_000_000_000));
 //System.Console.WriteLine((DateTime.Now - DTProg).TotalMilliseconds);
 sw.Stop();
@@ -866,102 +866,5 @@ WriteLine(PrintMyArray(cheat1));
 // WriteLine(PrintMyArray(cheat)); //Заполняет одним и тем же числом. Где и когда это может быть полезно? (вопрос себе)
 
 WriteLine("42. Определить сколько чисел больше 0 введено с клавиатуры");
-
-WriteLine();
-WriteLine("48. Показать двумерный массив размером m×n заполненный целыми числами");
-
-int[,] Create2DArray(int rows, int columns)
-{
-    return new int[rows, columns];
-}
-
-void Fill2DArray(int [,] collection, int minValue, int maxValue)
-{
-    for (int i = 0; i < collection.GetLength(0); i++)
-    {
-        for (int j = 0; j < collection.GetLength(1); j++)
-        {
-       collection[i, j] = new Random().Next(minValue, maxValue + 1);  
-        }
-        
-    }
-}
-
-string Print2DArray(int [,] collection)
-{
-    string outputString = String.Empty;
-    int paragraph = 0x00A; //шестнадцатеричный код абзаца в юникоде
-    for (int i = 0; i < collection.GetLength(0); i++)
-    {
-    for (int j = 0; j < collection.GetLength(1); j++) // И помни, что длина строки определяется количеством столбцов. И наоборот длина столбца определяется количеством строк.
-    {
-    outputString += $"{collection[i, j]} | ";
-    }
-    outputString += Convert.ToChar(paragraph);
-    }
-    return outputString;
-}
-
-int[,] A = Create2DArray(6, 10);
-Fill2DArray(A, 0, 100);
-WriteLine(Print2DArray(A));
-
-WriteLine();
-WriteLine("49. Показать двумерный массив размером m×n заполненный вещественными числами");
-
-double[,] Create2DArrOfReals(int rows, int columns)
-{
-    return new double[rows, columns];
-}
-
-void FillwithReals(double[,] collection)
-{
-    for (int i = 0; i < collection.GetLength(0); i++)
-    {
-        for (int j = 0; j < collection.GetLength(1); j++)
-        {
-            collection[i, j] = Math.Round(new Random().NextDouble(), 3, MidpointRounding.AwayFromZero);
-        }
-
-    }
-}
-
-string Print2DArrOfReals(double[,] collection)
-{
-    string outputString = String.Empty;
-    int paragraph = 0x00A; //шестнадцатеричный код абзаца в юникоде
-    for (int i = 0; i < collection.GetLength(0); i++)
-    {
-        for (int j = 0; j < collection.GetLength(1); j++)
-        {
-            outputString += $"{collection[i, j]} | ";
-        }
-        outputString += Convert.ToChar(paragraph);
-    }
-    return outputString;
-}
-
-double [,] mn = Create2DArrOfReals(6, 10);
-FillwithReals(mn);
-WriteLine(Print2DArrOfReals(mn));
-
-WriteLine();
-WriteLine("50. В двумерном массиве n×k заменить четные элементы на противоположные");
-
-void ChangeSignforEvens (int [,] collection)
-{
-for (int i = 0; i < collection.GetLength(0); i++)
-{
-  for (int j = 0; j < collection.GetLength(1); j++)
-  {
-    if (collection [i,j] % 2 == 0) collection[i,j] = -collection[i,j];
-  }  
-}
-}
-
-int[,] nk = Create2DArray(6, 10);
-Fill2DArray(nk, 0, 100);
-ChangeSignforEvens(nk);
-WriteLine(Print2DArray(nk));
 
 // TODO: Разделить потом на подпроекты в отдельном репозитории
