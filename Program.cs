@@ -848,23 +848,7 @@ WriteLine($"min = {mini} / max = {maxi}");
 double diff = maxi - mini;
 WriteLine($"difference = {diff}");
 
-
-WriteLine("47. Написать программу копирования массива");
-
-int [] cheat = CreateMyArray(15);
-FillMyArray(cheat, 0, 50);
-WriteLine(PrintMyArray(cheat));
-
-int [] cheat1 = CreateMyArray(15);
-Array.Copy(cheat, cheat1, cheat.Length); //Оказывается, так тоже можно. Спасибо, справка по c#
-WriteLine(PrintMyArray(cheat1));
-
-// int value = 5;
-// Array.Fill(cheat, value);
-// WriteLine(PrintMyArray(cheat));
-// Array.Fill(cheat, new Random().Next(0, 51));
-// WriteLine(PrintMyArray(cheat)); //Заполняет одним и тем же числом. Где и когда это может быть полезно? (вопрос себе)
-
+WriteLine();
 WriteLine("42. Определить сколько чисел больше 0 введено с клавиатуры");
 
 int[] FindIndex(string N, string[] array)
@@ -938,3 +922,36 @@ return countPositives;
 string txt = ReadLine()!;
 int [] numbers = ExtractIntNums(txt);
 WriteLine($"В текстовой строке {CountPositives(numbers)} положительных чисел");
+
+WriteLine();
+WriteLine("44. Найти точку пересечения двух прямых заданных уравнением y = k1 * x + b1, y = k2 * x + b2, b1 k1 и b2 и k2 заданы");
+
+double LineCross(double x, double step, double k1, double k2, double b1, double b2)
+{
+    double y1 = -3 * x + 5;
+    double y2 = 2 * x + 4;
+
+if (y1 == y2) return x;
+else return LineCross(x+step, step, k1, k2, b1, b2);
+}
+
+WriteLine(LineCross(0, 0.1, -3, 2, 5, 4));
+//TODO: Эту задачу хорошо бы решить таким образом, чтобы за один раз в методе проверялись значения +x+step (y1, y2) и -x-step (y3, y4) и если хотя бы одна пара игреков одинаковы, метод вернет текущий х.
+//Продолжение TODO: ещё лучше если бы в метод можно было закидывать не x, b, k, а y1 и y2, и чтобы также ч менялись в обе стороны. Но нужно уметь вовремя остановиться. 
+
+WriteLine();
+WriteLine("47. Написать программу копирования массива");
+
+int [] cheat = CreateMyArray(15);
+FillMyArray(cheat, 0, 50);
+WriteLine(PrintMyArray(cheat));
+
+int [] cheat1 = CreateMyArray(15);
+Array.Copy(cheat, cheat1, cheat.Length); //Оказывается, так тоже можно. Спасибо, справка по c#
+WriteLine(PrintMyArray(cheat1));
+
+// int value = 5;
+// Array.Fill(cheat, value);
+// WriteLine(PrintMyArray(cheat));
+// Array.Fill(cheat, new Random().Next(0, 51));
+// WriteLine(PrintMyArray(cheat)); //Заполняет одним и тем же числом. Где и когда это может быть полезно? (вопрос себе)
