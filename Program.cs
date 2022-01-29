@@ -928,8 +928,8 @@ WriteLine("44. Найти точку пересечения двух прямы�
 
 double LineCross(double x, double step, double k1, double k2, double b1, double b2)
 {
-    double y1 = -3 * x + 5;
-    double y2 = 2 * x + 4;
+    double y1 = k1 * x + b1;
+    double y2 = k2 * x + b2;
 
 if (y1 == y2) return x;
 else return LineCross(x+step, step, k1, k2, b1, b2);
