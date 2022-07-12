@@ -2,8 +2,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-
-        MathExpr.restore("5? + 3? = ??");
+        HanoiTower.doTowers(3, 'A', 'B', 'C');
         
     }
 }
