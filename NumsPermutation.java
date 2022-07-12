@@ -16,14 +16,14 @@ public class NumsPermutation {
     }
 
     List<Integer> comb = new ArrayList<>();
-    List<List<Integer>> allCombs = new ArrayList<>(); //для литкода надо заменить на ans
+    List<List<Integer>> allCombs = new ArrayList<>(); 
 
     public List<List<Integer>> withoutRepeat(int n, int k) {
         combine(n, k, 0, 1);
         return allCombs;
     }
 
-    private void combine(int n, int k, int index, int number) { //number - число, с которого начинается перебор возможных комбинаций. index - когда остановить перебор (когда достигнута длина к)
+    private void combine(int n, int k, int index, int number) { 
         if (index==k) {
             allCombs.add(new ArrayList<>(comb));
             return;
