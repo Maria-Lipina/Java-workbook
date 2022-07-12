@@ -2,19 +2,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MathExpression {
-    public void restore() {
-        // должны вызываться другие методы в этом классе и собираться решение
-    }
+public class MathExpr {
+    
+    private static char[] textGlobal;
+    private static List<Integer> signIndexesGlobal;
 
-    static char[] textGlobal;
-    static List<Integer> signIndexesGlobal;
-
-    public static void main(String[] args) throws IOException {
+    public static void restore(String text) throws IOException {
         ArrayList<Integer> signIndexes = new ArrayList<>();
-        String text = "5? + 3? = ??";
         char[] textChar = text.replace(" ", "").toCharArray();
-
         for (int i = 0; i < textChar.length; i++) {
             if (textChar[i] == '+' || textChar[i] == '=') {
                 textChar[i] = '_';
@@ -26,13 +21,11 @@ public class MathExpression {
         textGlobal = textChar;
         signIndexesGlobal = signIndexes;
 
-        CombWithRep(new int[signIndexes.size()], 0, 10); //потому что К - перебираем только цифры от 0 до 10
+        CombWithRep(new int[signIndexes.size()], 0, 10);
     }
 
-    public static void CombWithRep(int[] comb, int index, int K) {
+    private static void CombWithRep(int[] comb, int index, int K) {
         if (index == comb.length) {
-            //готова очередная комбинация
-            // давайте здесь поставим на место вопросов очередную комбинацию и проверим, подходит ли она нам
             checkComb(comb);
             return;
         }
@@ -43,7 +36,7 @@ public class MathExpression {
         }
     }
 
-    public static void checkComb(int[] comb) {
+    private static void checkComb(int[] comb) {
         for (int i = 0; i < comb.length; i++) {
 
             textGlobal[signIndexesGlobal.get(i)] = Character.forDigit(comb[i], 10);
@@ -59,4 +52,5 @@ public class MathExpression {
         }
         
     }
+
 }
