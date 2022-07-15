@@ -1,22 +1,44 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 
 public class hello_collections {
     
-    public static void main(String[] args) {
-        ArrayList<Integer> al1 = new ArrayList<>();
-        Random gen = new Random();
+    public static void main(String[] args) throws IOException {
+        BufferedReader bfr = new BufferedReader(new FileReader("wf\\f.txt"));
+        List<String> names = new ArrayList<>();
 
-        System.out.println(al1.size());
-
-        for (int i = 0; i < 10; i++) {
-            al1.add(gen.nextInt(30));
+        String s;
+        while ((s = bfr.readLine()) != null) {
+            names.add(s);
         }
-        System.out.println(al1);
-        System.out.printf("%d / %d / %d / %d\n", al1.get(5), al1.indexOf(5), al1.lastIndexOf(10), al1.remove(9));
-        al1.set(0, 456);
-        System.out.println(al1);
-        System.out.println(Integer.compare(al1.get(3), al1.get(4)));
-    
+        bfr.close();
+        
+        Queue<Integer> llq = new LinkedList<>();
+
+        Iterator<String> nam = names.iterator();
+        while (nam.hasNext()) {
+            llq.offer(nam.next().length());
+        }
+
+        List<String> namesShort = new ArrayList<>();
+
+        String temp;
+        Iterator<Integer> llqit = llq.iterator();        
+        while (llqit.hasNext() && nam.hasNext()) {
+
+            temp = nam.next() + llqit.next().toString();
+            namesShort.add(temp);
+        }
+
+        for (String string : namesShort) {
+            System.out.print(string + "\t");
+        }
     }
 }
