@@ -42,3 +42,4 @@
 23 | 16 | 11 | 6 |21
 
 14. https://leetcode.com/problems/duplicate-zeros/
+15. https://leetcode.com/problems/valid-mountain-array/ 
