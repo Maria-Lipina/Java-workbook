@@ -9,10 +9,12 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        BufferedReader bfr = new BufferedReader(new FileReader("wf\\f.txt"));
-        String s;
-        Random rdm = new Random();
+
         Queue<Person> persons = new LinkedList<>();
+        Random rdm = new Random();
+        String s;
+        BufferedReader bfr = new BufferedReader(new FileReader("wf\\f.txt"));
+        
 
         while ((s = bfr.readLine()) != null) {
             persons.add(new Person(s, rdm.nextInt(20, 50)));

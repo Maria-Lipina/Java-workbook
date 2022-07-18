@@ -11,27 +11,28 @@ import java.util.Set;
 public class hello_collections {
     
     public static void main(String[] args) throws IOException {
-       BufferedReader bfr = new BufferedReader(new FileReader("wf\\f.txt"));
-       Map<Integer, String> people = new HashMap<>();
-       int key = 1;
+      addToJournal("wf\\f.txt", "wf\\fi.txt");
+      addToJournal("wf\\f1.txt", "wf\\fi.txt");
+    }
 
-       String s;
-       while ((s = bfr.readLine()) != null) {
-       people.put(key, s);
-       key++;
-       }
-       bfr.close();
+    public static void addToJournal(String input, String journal) throws IOException{
+      BufferedReader bfr = new BufferedReader(new FileReader(input));
+      Map<Integer, String> people = new HashMap<>();
+      int key = people.size();
 
-    //    System.out.println(people.toString());
+      String s;
+      while ((s = bfr.readLine()) != null) {
+         ++key;
+         people.put(key, s);
+      }
+      bfr.close();
 
-       FileWriter fw = new FileWriter("wf\\fi.txt", true);
-       System.out.println(people.keySet());
-       Set<Integer> temp = people.keySet();
-       for (Integer i : temp) {
-        fw.append(i + " " + people.get(i) + "\n");
-       }
-       fw.flush();
-       fw.close();
+      FileWriter fw = new FileWriter(journal, true);
+      for (Integer i : people.keySet()) {
+      fw.append(i + " " + people.get(i) + "\n");
+      }
+      fw.flush();
+      fw.close();
 
     }
 }
