@@ -18,7 +18,7 @@ public class hello_collections {
     public static void addToJournal(String input, String journal) throws IOException{
       BufferedReader bfr = new BufferedReader(new FileReader(input));
       Map<Integer, String> people = new HashMap<>();
-      int key = people.size();
+      int key = journalSize(journal);
 
       String s;
       while ((s = bfr.readLine()) != null) {
@@ -34,7 +34,18 @@ public class hello_collections {
       fw.flush();
       fw.close();
 
-    }
+   }
+
+   public static int journalSize(String journal) throws IOException {
+
+      BufferedReader bfr = new BufferedReader(new FileReader(journal));
+      int linecount = 0;
+      while (bfr.readLine() != null) {
+         linecount++;
+      }
+      bfr.close();
+      return linecount;
+   }
 }
 
 
