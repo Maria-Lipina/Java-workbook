@@ -1,22 +1,21 @@
-package UndergroundSystem;
+package UndergroundSystemMine;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Trip {
-    int timeIn; // почему бы им не получаться в результате методов checkIn и checkOut, хотя это
-                // противоречит условию задания
+    int timeIn;
     int timeOut;
     List<String> route;
     private Random rt = new Random();
 
     public Trip(Client c) {
         route = new ArrayList<>();
-        timeIn = c.CheckIn(); //как бы this. тут не нужно. Или все-таки нужно?
+        timeIn = c.CheckIn();
         route.add(Program.stations.get(rt.nextInt(Program.stations.size() - 2)));
         timeOut = c.CheckOut();
-        route.add(Program.stations.get(rt.nextInt(Program.stations.size() - 2))); //Даже без проверки на разность - ничего, оставим клиентам право просто покататься на метро
+        route.add(Program.stations.get(rt.nextInt(Program.stations.size() - 2)));
     }
 
     public int getTimeIn() {
