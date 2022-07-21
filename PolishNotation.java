@@ -1,14 +1,15 @@
+import java.util.Set;
 import java.util.Stack;
 
 public class PolishNotation {
 
-    public static void main(String[] args) {
-        String[] tokens = new String[] { "2", "1", "+", "3", "/" };
+    public static int calc(String[] tokens) {
+        Set<String> ops = Set.of("+", "-", "*", "/");
         Stack<Integer> opnds = new Stack<>();
         for (int i = 0; i < tokens.length; i++) {
-            try {
+            if (!ops.contains(tokens[i])) {
                 opnds.push(Integer.parseInt(tokens[i]));
-            } catch (NumberFormatException nfe) {
+            } else {
                 switch (tokens[i]) {
                     case "+":
                         opnds.push(opnds.pop() + opnds.pop());
@@ -23,13 +24,10 @@ public class PolishNotation {
                         int temp = opnds.pop();
                         opnds.push(opnds.pop() / temp);
                         break;
-                    default:
-                        System.out.println(nfe.getMessage());
-                        break;
                 }
             }
         }
-        System.out.println(opnds.peek());
+        return opnds.peek();
     }
 
 }
