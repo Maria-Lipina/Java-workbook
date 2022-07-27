@@ -50,3 +50,4 @@
 18. https://leetcode.com/problems/evaluate-reverse-polish-notation/
 19. https://leetcode.com/problems/implement-queue-using-stacks/
 20. Реализовать алгоритм пирамидальной сортировки (HeapSort) ```- фактически от нас действительно ожидали применение priorityQueue c последнего занятия```
+21. Реализовать алгоритм сортировки слиянием
