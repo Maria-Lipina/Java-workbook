@@ -5,35 +5,30 @@ import java.util.Stack;
 /*Ссылка на задачу https://leetcode.com/problems/min-stack/ */
 
 public class MinStack {
-    LinkedList <Integer> ordered = new LinkedList<>();
-    Stack<Integer> in;
-    Comparator<Integer> c = Comparator.naturalOrder();
-
-    public MinStack() {
-        in = new Stack<>();
-    }
+        Stack<int[]> st;
     
-    public void push(int val) {
-        in.push(val);
-    }
+        public MinStack() {
+            st = new Stack<>();
+        }
+        
+        public void push(int val) {
+            if (st.isEmpty()) {
+                st.push(new int[] {val, val});
+            } else {
+                int min = val < st.peek()[1] ? val : st.peek()[1];
+                st.push(new int[]{val, min});
+            }
+        }
+        
+        public int[] pop() { //для литкода нужно изменить на void
+            return st.pop();
+        }
     
-    public int pop() {//для литкода нужно снова изменить на void
-        return in.pop();
+        public int top() {
+            return st.peek()[0];
+        }
+        
+        public int getMin() {
+            return st.peek()[1];
+        }
     }
-    
-    private void sort(Stack<Integer> in) {
-        ordered.addAll(in);
-        c.compare(ordered.get(0), ordered.get(1));
-        ordered.sort(c);
-    }
-
-    public int top() {
-        sort(in);
-        return ordered.peekLast();
-    }
-    
-    public int getMin() {
-        sort(in);
-        return ordered.peekFirst();
-    }
-}

@@ -1,18 +1,14 @@
 import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {     
+    MinStack minStack = new MinStack();
+    minStack.push(-2);
+    minStack.push(0);
+    minStack.push(-3);
+    System.out.println("Min " + minStack.getMin()); //-3
+    System.out.println("Min " + minStack.getMin()); //-2 правильно
 
-        int[][] matrix = 
-        {
-            {1, 0, 1, 1, 1},
-            {1, 0, 1, 0, 1},
-            {1, 1, 1, 0, 1},
-            {0, 0, 0, 0, 1},
-            {1, 1, 1, 0, 1},
-            {1, 1, 0, 0, 0},
-        };
-        LeeAlgorithm.bfs(matrix, 0, 0, 3, 4); //The shortest path has length 7
 }
 
 }
