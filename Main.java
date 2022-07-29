@@ -1,17 +1,18 @@
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class Main {
-    public static void main(String[] args) throws IOException {     
-        Random r = new Random();
-        List<Integer> array = new ArrayList<>();
-        for (int i = 0; i < 21; i++) {
-            array.add(r.nextInt(20));
-        }    
-        System.out.println(array);
-        System.out.println(MergeSort.mergeSort(array));
+    public static void main(String[] args) throws IOException {
+
+        int[][] matrix = 
+        {
+            {1, 0, 1, 1, 1},
+            {1, 0, 1, 0, 1},
+            {1, 1, 1, 0, 1},
+            {0, 0, 0, 0, 1},
+            {1, 1, 1, 0, 1},
+            {1, 1, 0, 0, 0},
+        };
+        LeeAlgorithm.bfs(matrix, 0, 0, 3, 4); //The shortest path has length 7
 }
 
 }
