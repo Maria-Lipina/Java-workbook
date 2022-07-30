@@ -1,5 +1,3 @@
-import javax.swing.plaf.SliderUI;
-
 public class ParkingSystem {
 
     int[] slots;
