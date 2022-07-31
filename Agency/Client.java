@@ -1,29 +1,43 @@
 package Agency;
 
+import Agency.Agency.Position;
+
 class Client {
 
-    private String name;
+    private String clName;
     private String birthDate;
     private String passNo;
     private String phoneNo;
     
-    public Client(String name, String birthDate, String passNo, String phoneNo) {
-        this.name = name;
+    public Client(String clName, String birthDate, String passNo, String phoneNo) {
+        this.clName = clName;
         this.birthDate = birthDate;
         this.passNo = passNo;
         this.phoneNo = phoneNo;
     }
 
-    public String getName() {
-        return name;
+    public Client(String clName, String birthDate, String passNo) {
+        this(clName, birthDate, passNo, "");
     }
 
-    public void setName(String name, Worker worker) {
-        if (worker.getStatus() == Status.consultant) {
+    public Client(String clName, String birthDate) {
+        this(clName, birthDate, "", "");
+    }
+
+    public Client(String clName) {
+        this(clName, "", "", "");
+    }
+
+    public String getClName() {
+        return clName;
+    }
+
+    public void setName(String clName, Worker worker) {
+        if (worker.getPosition() == Position.consultant) {
             System.out.println("Access denied");
             return;
         } else {
-            this.name = name;
+            this.clName = clName;
         }
     }
 
@@ -36,14 +50,14 @@ class Client {
     }
 
     public String getPassNo(Worker worker) {
-        if (worker.getStatus() == Status.consultant && !passNo.isEmpty()) {
+        if (worker.getPosition() == Position.consultant && !passNo.isEmpty()) {
             return "...";
         }
         return passNo;
     }
 
     public void setPassNo(String passNo, Worker worker) {
-        if (worker.getStatus() == Status.consultant) {
+        if (worker.getPosition() == Position.consultant) {
             System.out.println("Access denied");
             return;
         } else {
@@ -66,7 +80,7 @@ class Client {
 
     @Override
     public String toString() {
-        return "Client [age=" + birthDate + ", name=" + name + ", passNo=" + passNo + ", phoneNo=" + phoneNo + "]";
+        return "Client [age=" + birthDate + ", name=" + clName + ", passNo=" + passNo + ", phoneNo=" + phoneNo + "]";
     }
 
 }

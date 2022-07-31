@@ -1,26 +1,24 @@
 package Agency;
 
-enum Status { //хотя правильнее было бы назвать Position - должность
-    consultant,
-    dptHead,
-    director;
-}
+import Agency.Agency.Position;
+import Agency.Agency.Task;
 
 class Worker {
-    private String name;
-    private Status status;
+    private String wName;
+    private Position pos;
+    private Task task;
 
-    public Worker(String name, Status status) {
-        this.name = name;
-        this.status = status;
+    public Worker(String wName, Position pos) {
+        this.wName = wName;
+        this.pos = pos;
     }
 
-    public String getName() {
-        return name;
+    public String geWName() {
+        return wName;
     }
 
-    public Status getStatus() {
-        return status;
+    public Position getPosition() {
+        return pos;
     }
 
     
