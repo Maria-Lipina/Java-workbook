@@ -1,8 +1,16 @@
 package WardrobeAndPerson;
 
+import WardrobeAndPerson.Container;
+
 public class Husband {
 
-            //метод take
+    public Husband() {
+
+        
+
+    }
+
+        //метод take
 
         //метод observe
 
