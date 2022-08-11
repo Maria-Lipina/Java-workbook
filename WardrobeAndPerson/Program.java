@@ -1,7 +1,5 @@
 package WardrobeAndPerson;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Program {
@@ -11,11 +9,14 @@ public class Program {
 
         Container shelf = new Container();
         Wife masha = new Wife();
+        Husband sasha = new Husband();
         
         for (int i = 0; i < 10; i++) {
-         shelf.addItems("item" + r.nextInt(10));   
+         masha.addItems("item" + r.nextInt(10), shelf);   
         }
-        shelf.setState();
-        System.out.println(shelf.observe());
+        sasha.observe(masha, shelf);
+        sasha.observe(masha, shelf);
+
+
     }
 }
