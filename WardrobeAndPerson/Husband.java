@@ -1,18 +1,15 @@
 package WardrobeAndPerson;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import WardrobeAndPerson.Container.Door;
 
 public class Husband {
 
-    Random r = new Random();
+    public Husband() { }
 
-    public Husband() {
-
-    }
-
+    /*Перед тем, как заглянуть в шкаф (покопаться в нем) или взять из него что-то, необходимо получить разрешение жены - обеспечить открытие шкафа. Даже жене как классу, производному от мужа, нужно переспросить себя, перед тем как выполнить действия в Husband */
+    
     private void confirm(Wife w, Container c) {
         if (w.permission() == false) {
             return;
@@ -41,7 +38,7 @@ public class Husband {
     public void takeItems(String item, Container c, Wife w) {
         confirm(w, c);
         if (c.getState() == Door.Open) {
-            c.items.remove(item);
+            c.items.remove(c.items.indexOf(item));
             c.state = Door.Close;
         }
     }

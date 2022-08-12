@@ -1,17 +1,18 @@
 package WardrobeAndPerson;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import WardrobeAndPerson.Container.Door;
 
 public class Wife extends Husband {
 
-    public Wife() {
-        
-    }
+    Random r = new Random();
+
+    public Wife() { }
    
     public boolean permission() {
-        if (super.r.nextInt(2) == 0) {
+        if (r.nextInt(2) == 0) {
             return false;
         } else {
             return true;
@@ -32,7 +33,7 @@ public class Wife extends Husband {
     
     public void findIt(String item, Container c) {
         c.state = Door.Open;
-        if (c.items.contains(item)) System.out.println("есть");
+        if (c.items.contains(item)) System.out.println("Есть");
         else System.out.println("Надо купить?");
         c.state = Door.Close;
     }

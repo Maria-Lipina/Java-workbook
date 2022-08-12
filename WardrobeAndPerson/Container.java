@@ -3,14 +3,17 @@ package WardrobeAndPerson;
 import java.util.ArrayList;
 
 public class Container {
-    ArrayList<String> items;
+    
     enum Door {
         Open,
         Close;
     }
     protected Door state;
 
-    public Container() { //штанга для вешалок-плечиков с вещами или просто полка. Вещи представлены коллекцией items
+    protected ArrayList<String> items;
+
+    /* штанга для вешалок-плечиков с вещами или просто полка. Вещи представлены коллекцией items*/
+    public Container() {
         this.items = new ArrayList<>();
         this.state = Door.Close;
     }
@@ -19,7 +22,7 @@ public class Container {
         return state;
     }
 
-    protected void setState() { //для открытия и закрытия один мктод
+    protected void setState() {
         if (this.state == Door.Close) {this.state = Door.Open; return;}
         else {this.state = Door.Close; return;}
     } 
