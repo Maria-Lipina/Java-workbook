@@ -1,5 +1,3 @@
-import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.Stack;
 
 /*Ссылка на задачу https://leetcode.com/problems/min-stack/ */

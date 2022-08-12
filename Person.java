@@ -12,10 +12,6 @@ public class Person {
         this.id = ++idBase;
     }
 
-    private int getID() {
-       return this.id;
-    }
-
     @Override
     public String toString() {
         return String.format("Name: %s;\nID: %d;\nAge: %d", name, id, age);
