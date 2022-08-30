@@ -19,33 +19,38 @@ public class Program {
   System.out.println(new Reserch(gt).spend(irina,
                      Relationship.parent));
   }
-}
-enum Relationship {
-  parent,
-  children
+
 }
 
 class Person {
   public String fullName;
-  public String getFullName() {
-    return fullName;
-  }
 
   public Person(String fullName) {
     this.fullName = fullName;
   }
+
+  public String getFullName() {
+    return fullName;
+  }
+
+}
+
+enum Relationship {
+  parent,
+  children
 }
   
 class Node {
+  
+  Person p1;
+  Relationship re;
+  Person p2;
+  
   public Node(Person p1, Relationship re, Person p2) {
        this.p1 = p1;
        this.re = re;
        this.p2 = p2;
    }
-
-   Person p1;
-   Relationship re;
-   Person p2;
 
    @Override
    public String toString() {
@@ -55,6 +60,7 @@ class Node {
 
 class GeoTree {
   private ArrayList<Node> tree = new ArrayList<>();
+  
   public ArrayList<Node> getTree() {
     return tree;
   }
@@ -80,6 +86,7 @@ class Reserch {
     }
     return result;
   }
+  
 }
 
 class Reserch2 {
