@@ -20,9 +20,8 @@ public class MyProgram {
     ft.addNode(ivan, Type.son, vasya);
 
     Research children = new Research(ft);
-    Printer p = new Printer();
-    System.out.println(p.people(children.findAll(vasya, Type.son)));
-    System.out.println(p.people(children.findAll(vasya, Type.daughter)));
+    System.out.println(Printer.people(children.findAll(vasya, Type.son)));
+    System.out.println(Printer.people(children.findAll(vasya, Type.daughter)));
   }
 
 }
