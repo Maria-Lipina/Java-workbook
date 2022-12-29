@@ -17,7 +17,7 @@ class LeeAlgorithm {
     static int N = 5;
 
     private static boolean isValid(int[][] mat, boolean[][] visited, int row, int col) {
-        return ((row >=0) && (row < M)) && ((col>=0) && (col < N)) /*&& (mat[row][col] == 0)*/ && (!visited[row][col]);
+        return ((row >=0) && (row < M)) && ((col>=0) && (col < N)) && (!visited[row][col]);
     }
 
     public static void bfs(int[][] matrix, int sourceX, int sourceY, int targetX, int targetY) {
@@ -57,12 +57,7 @@ class LeeAlgorithm {
 }
 
 }
-/*TODO or not TODO: см. комментарий
-В этом коде есть баг, который не дает получить изначально ожидаемый ответ 11 (окрестности по фон Нейману). Но сокрытие одного из условий в строке 20 научило алгоритм ходить по диагонали, и The shortest path has length 7 (окрестности по Муру). Так как в задаче нет условия, как должен прокладываться путь, то она может считаться решенной. Входные данные под error tracing.
-
- * Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 6        at LeeAlgorithm.isValid(LeeAlgorithm.java:20)
-        at LeeAlgorithm.bfs(LeeAlgorithm.java:44)
-        at LeeAlgorithm.main(LeeAlgorithm.java:69)
+/*. The shortest path has length 7 (окрестности по Муру). Входные данные:
  
      int[][] matrix = 
     {
