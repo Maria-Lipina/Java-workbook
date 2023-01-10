@@ -3,7 +3,6 @@
 Некоторые упражнения с LeetСode могут не запуститься на сайте, так как после submission были адаптированы под формат и запуск, как в основном репозитории
 
 Список упражнений (в порядке добавления):
-1. Узнать тип переменной
 2. https://leetcode.com/problems/build-array-from-permutation/
 3. https://leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/
 4. Реализовать функцию возведения числа а в степень b. a, b ∈ Z. Сводя количество выполняемых действий к минимуму. 
@@ -36,17 +35,16 @@
 13. ДЗ после семинара 3: * Шахматную доску размером NxN обойти конём так, чтобы фигура в каждой клетке была строго один раз.
 Пример для доски 5х5 решение может выглядеть так.
 
-25 | 14 | 3 | 8 | 19
----- | ---- | ---- | ---- | ---- |
-4 | 9 | 18 | 13 | 2
-15 | 24 | 1 | 20 | 7
-10 | 5 | 22 | 17 | 12
-23 | 16 | 11 | 6 |21
+| 25  | 14  | 3   | 8   | 19  |
+|-----|-----|-----|-----|-----|
+| 4   | 9   | 18  | 13  | 2   |
+| 15  | 24  | 1   | 20  | 7   |
+| 10  | 5   | 22  | 17  | 12  |
+| 23  | 16  | 11  | 6   | 21  |
 
 14. https://leetcode.com/problems/duplicate-zeros/
 15. https://leetcode.com/problems/valid-mountain-array/
 16. https://leetcode.com/problems/design-underground-system/
-17. https://leetcode.com/problems/design-parking-system/
 18. https://leetcode.com/problems/evaluate-reverse-polish-notation/
 19. https://leetcode.com/problems/implement-queue-using-stacks/
 20. Реализовать алгоритм пирамидальной сортировки (HeapSort) ```- фактически от нас действительно ожидали применение priorityQueue c последнего занятия```
