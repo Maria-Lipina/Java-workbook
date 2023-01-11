@@ -3,7 +3,8 @@ package example.OneClassTasks;
 public class ArrayPermutation {
 
     /**
-     * @param nums
+     * <a href="https://leetcode.com/problems/build-array-from-permutation/">текст задачи</a>
+     * @param nums целочисленный массив
      * @return массив, составленный из элементов nums по формуле ans[i] =
      *         nums[nums[i]]. nums[i] < nums.length.
      */

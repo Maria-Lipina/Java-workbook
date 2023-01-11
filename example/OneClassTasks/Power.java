@@ -5,15 +5,6 @@ package example.OneClassTasks;
  */
 public class Power {
 
-    public static void main(String[] args) {
-
-        int a = 7;
-        int b = 11;
-
-        System.out.println(Power.bitwise(a, b));
-
-    }
-
     public static Long bitwise(int num, int power) {
         long res = 1L;
         long powered = num;

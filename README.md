@@ -3,8 +3,7 @@
 Некоторые упражнения с LeetСode могут не запуститься на сайте, так как после submission были адаптированы под формат и запуск, как в основном репозитории
 
 Список упражнений (в порядке добавления):
-2. https://leetcode.com/problems/build-array-from-permutation/
-3. https://leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/
+
 4. Реализовать функцию возведения числа а в степень b. a, b ∈ Z. Сводя количество выполняемых действий к минимуму. 
     Пример 1: а = 3, b = 2, ответ: 9 
     Пример 2: а = 2, b = -2, ответ: 0.25
@@ -25,7 +24,6 @@
 Пример 2: а = 11, b = 7, c = 2, d = 1
 ответ: нет решения. 
 *Подумать над тем, как сделать минимальное количество команд
-6. Написать программу вычисления n-ого треугольного числа.
 7. Напишите метод, который принимает на вход строку и определяет, является ли она палиндромом.
 8. Напишите метод, который сжимает строку. Пример: вход ааааbbbcd, результат - а4b3cd2.
 9. https://leetcode.com/problems/combinations/
@@ -42,7 +40,6 @@
 | 10  | 5   | 22  | 17  | 12  |
 | 23  | 16  | 11  | 6   | 21  |
 
-14. https://leetcode.com/problems/duplicate-zeros/
 15. https://leetcode.com/problems/valid-mountain-array/
 16. https://leetcode.com/problems/design-underground-system/
 18. https://leetcode.com/problems/evaluate-reverse-polish-notation/
