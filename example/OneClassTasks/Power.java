@@ -1,7 +1,7 @@
 package example.OneClassTasks;
 
 /**
- * Программа возведения целого числа в степень
+ * Программа возведения целого числа в степень (stepik)
  */
 public class Power {
 
