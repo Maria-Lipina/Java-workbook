@@ -1,15 +1,12 @@
 package example;
 
-import java.util.Scanner;
-
-import static example.OneClassTasks.PrimeDivisors.primeDivisors;
+import example.OneClassTasks.EuclidGCD;
 
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println(primeDivisors(sc.nextInt()));
-
+//        Scanner sc = new Scanner(System.in);
+        System.out.println(EuclidGCD.find1(8910, 2340));
 
     }
 
