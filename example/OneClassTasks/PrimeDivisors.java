@@ -12,9 +12,10 @@ public class PrimeDivisors {
         return primeDivisors(n, res);
     }
 
+
     public static StringBuilder primeDivisors(int n, StringBuilder res) {
         int i = 2;
-        while (n > 3) {
+        while (n > 1) {
             if (n % i == 0) {
                 res.append(i);
                 res.append(" ");
@@ -25,6 +26,4 @@ public class PrimeDivisors {
         }
         return res;
     }
-
-    //TODO: на платформе один из тестов показал ошибку. Но input, expected output платформа не показала. Вот как понять, что тут не так?
 }
