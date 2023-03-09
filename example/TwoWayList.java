@@ -3,18 +3,18 @@ package example;
 /**
  * Базовая реализация двусвязного списка
  */
-public class TwoWayList {
-    Node head;
-    Node tail;
+public class TwoWayList <T extends Comparable<T>>{
+    Node<T> head;
+    Node<T> tail;
 
     /**
-     * Найти элемент value в двусвязном списке
-     * @param value
+     * Найти в двусвязном списке
+     * @param value значение элемента, который нужно найти
      * @return элемент списка Node, в котором хранится искомое значение
      */
     //Можно ли запускать поиск в обе стороны? Насколько это будет оправданно?
-    public Node find(int value) {
-        Node currentNode = head;
+    public Node<T> find(T value) {
+        Node<T> currentNode = head;
         while (currentNode != null){
             if (currentNode.value == value) {
                 return currentNode;
@@ -26,19 +26,18 @@ public class TwoWayList {
 
     /**
      * Добавление элемента в конец списка
-     * @param value
+     * @param value значение добавляемого элемента
      */
-    public void add (int value) {
-        Node node = new Node();
+    public void add (T value) {
+        Node<T> node = new Node<>();
         node.value = value;
         if (head == null) {
             head = node;
-            tail = node;
         } else {
             tail.next = node;
             node.previous = tail;
-            tail = node;
         }
+        tail = node;
     }
 
 
@@ -47,9 +46,9 @@ public class TwoWayList {
      * @param value значение элемента, добавляемого в список
      * @param node элемент списка, после которого добавляется value
      */
-    void add (int value, Node node) {
-        Node next = node.next;
-        Node newNode = new Node();
+    void add (T value, Node<T> node) {
+        Node<T> next = node.next;
+        Node<T> newNode = new Node<>();
         newNode.value = value;
         node.next = newNode;
         newNode.previous = node;
@@ -67,8 +66,8 @@ public class TwoWayList {
      * @param value значение элемента, добавляемого в список
      * @param position значение элемента, после которого в список добавляется value
      */
-    public void add(int value, int position){
-        Node node = this.find(position);
+    public void add(T value, T position){
+        Node<T> node = this.find(position);
         if (node != null) this.add(value, node);
         else this.add(value);
     }
@@ -77,9 +76,9 @@ public class TwoWayList {
      * Удаление элемента из списка - основная логика, которую рассматривали в лекции. Метод ниже - добавление от меня.
      * @param node - удаляемый элемент
      */
-    void delete(Node node){
-        Node previous = node.previous;
-        Node next = node.next;
+    void delete(Node<T> node){
+        Node<T> previous = node.previous;
+        Node<T> next = node.next;
         if (previous == null){
             next.previous = null;
             head = next;
@@ -96,10 +95,10 @@ public class TwoWayList {
 
     /**
      * Удаление элемента из списка
-     * @param value
+     * @param value значение удаляемого элемента
      */
-    public void delete (int value) {
-        Node node = this.find(value);
+    public void delete (T value) {
+        Node<T> node = this.find(value);
         if (node != null) this.delete(node);
     }
 
@@ -108,10 +107,10 @@ public class TwoWayList {
      * Разворот двусвязного списка
      */
     public void revert(){
-        Node currentNode = head;
+        Node<T> currentNode = head;
         while (currentNode != null){
-            Node next = currentNode.next;
-            Node previous = currentNode.previous;
+            Node<T> next = currentNode.next;
+            Node<T> previous = currentNode.previous;
             currentNode.next = previous;
             currentNode.previous = next;
             if (previous == null) tail = currentNode;
@@ -125,7 +124,7 @@ public class TwoWayList {
 //     Можно ли реализовать его через цикл?
 //     */
 //    public void revert() {
-//        Node temp = head; //первый вариант обработки ссылки на следующую ноду в голове списка
+//        Node<T> temp = head; //первый вариант обработки ссылки на следующую ноду в голове списка
 //        if(head != null && head.next != null) {
 //            revert(head.next, head);
 //        }
@@ -144,7 +143,7 @@ public class TwoWayList {
 //     Для очереди и стека метод push одинаков, кроме строки head.previous = node, которая закомментирована для очереди
 //     */
 //    public void push(int value){
-//        Node node = new Node();
+//        Node<T> node = new Node<>();
 //        node.value = value;
 //        node.next = head;
 //        //head.previous = node;
@@ -155,8 +154,8 @@ public class TwoWayList {
 //     * получение последнего, верхнего элемента стека
 //     * @return значение в элементе списка.
 //     */
-//    public Integer pop(){
-//        Integer result = null;
+//    public T pop(){
+//        T result = null;
 //        if(head != null) {
 //            result = head.value;
 //            head = head.next;
@@ -164,8 +163,8 @@ public class TwoWayList {
 //        return result;
 //    }
 //
-//    public Integer peek() {
-//        Integer result = null;
+//    public T peek() {
+//        T result = null;
 //        if(tail != null){
 //            result = tail.value;
 //            tail.previous.next = null;
@@ -176,9 +175,9 @@ public class TwoWayList {
 
 }
 
-class Node { //здесь по хорошему должен быть дженерик вместо int. Что-то вроде наследования от обджекта, чтобы поддерживал все типы данных
-    int value;
-    Node next;
-    Node previous;
+class Node <T extends Comparable<T>> {
+    T value;
+    Node<T> next;
+    Node<T> previous;
 }
 
