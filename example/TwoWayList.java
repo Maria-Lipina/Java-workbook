@@ -1,5 +1,7 @@
 package example;
 
+import java.util.Comparator;
+
 /**
  * Базовая реализация двусвязного списка
  */
@@ -119,6 +121,92 @@ public class TwoWayList <T extends Comparable<T>>{
         }
     }
 
+    public void print(){
+        Node<T> currentNode = head;
+        while (currentNode != null){
+            System.out.printf("%s ", currentNode.value);
+            currentNode = currentNode.next;
+        }
+        System.out.println();
+    }
+
+    /**
+     * быстрая сортировка двусвязного списка от меня
+     */
+    public void quickSort () {
+        quickSort(head, tail);
+    }
+
+    void quickSort(Node<T> min, Node<T> max) {
+        Node<T> limit;
+        while (min.previous != max && min.previous != max.previous){
+            if(min.value.compareTo(max.value) > 0) {
+                T temp = min.value;
+                min.value = max.value;
+                max.value = temp;
+            }
+            System.out.printf("%s ", min.value);
+            min = min.next;
+            max = max.previous;
+        }
+        System.out.println();
+    }
+
+    /**
+     * Сортировка вставками по возрастанию
+     */
+    public void sort () {
+        if (head != null && head.next != null) {
+            Node<T> current = head;
+            while (current != null) {
+                Node<T> compareWith = current.next;
+                while (compareWith != null) {
+                    if (current.value.compareTo(compareWith.value) > 0) {
+                        T temp = current.value;
+                        current.value = compareWith.value;
+                        compareWith.value = temp;
+                    }
+                    compareWith = compareWith.next;
+                }
+                current = current.next;
+            }
+        }
+    }
+
+    /**
+     * Сортировка вставками, метод от другого студента
+     * @param comparator порядок сортировки
+     */
+    public void selectionSort(Comparator<T> comparator) {
+        Node<T> node = head;
+        while(node != null) {
+            Node<T> minValueNode = node;
+            Node<T> node2 = node.next;
+            while(node2 != null) {
+                if(comparator.compare(minValueNode.value, node2.value) > 0) {
+                    minValueNode = node2;
+                }
+                node2 = node2.next;
+            }
+            if(minValueNode != node) {
+                T buff = node.value;
+                node.value = minValueNode.value;
+                minValueNode.value = buff;
+            }
+            node = node.next;
+        }
+    }
+
+
+}
+
+class Node <T extends Comparable<T>> {
+    T value;
+    Node<T> next;
+    Node<T> previous;
+}
+
+
 //    /**
 //     * Если бы список был односвязным, то разворот производился бы по этому методу.
 //     Можно ли реализовать его через цикл?
@@ -172,12 +260,4 @@ public class TwoWayList <T extends Comparable<T>>{
 //        }
 //        return result;
 //    }
-
-}
-
-class Node <T extends Comparable<T>> {
-    T value;
-    Node<T> next;
-    Node<T> previous;
-}
 
