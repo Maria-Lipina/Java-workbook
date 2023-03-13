@@ -6,13 +6,14 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
         TwoWayList<Integer> twl = new TwoWayList<>();
-        for (int i = 0; i < 10; i++) {
-            twl.add((int)(Math.random()*100));
+        for (int i = 0; i < 10 ; i++) {
+            twl.pushBack((int)(Math.random()*100));
         }
-        twl.print();
-        twl.quickSort();
+        System.out.println(twl);
+        TwoWayList sorted = twl.quickSort();
 //        twl.sort();
-        twl.print();
+        System.out.println("----");
+        System.out.println(sorted);
 
         //        twl.selectionSort(new Comparator<Integer>() {
 //            @Override

@@ -1,6 +1,7 @@
 package example;
 
 import java.util.Comparator;
+import java.util.StringJoiner;
 
 /**
  * Базовая реализация двусвязного списка
@@ -14,7 +15,6 @@ public class TwoWayList <T extends Comparable<T>>{
      * @param value значение элемента, который нужно найти
      * @return элемент списка Node, в котором хранится искомое значение
      */
-    //Можно ли запускать поиск в обе стороны? Насколько это будет оправданно?
     public Node<T> find(T value) {
         Node<T> currentNode = head;
         while (currentNode != null){
@@ -30,7 +30,7 @@ public class TwoWayList <T extends Comparable<T>>{
      * Добавление элемента в конец списка
      * @param value значение добавляемого элемента
      */
-    public void add (T value) {
+    public void pushBack (T value) {
         Node<T> node = new Node<>();
         node.value = value;
         if (head == null) {
@@ -42,13 +42,21 @@ public class TwoWayList <T extends Comparable<T>>{
         tail = node;
     }
 
+        public void pushFront(T value){
+        Node<T> node = new Node<>();
+        node.value = value;
+        if (head != null) {
+            node.next = head;
+        }
+        head = node;
+    }
 
     /**
      * Добавление элемента в список после другого элемента - основная логика, которую рассматривали в лекции. Сокрытие и публичный метод ниже - добавление от меня
      * @param value значение элемента, добавляемого в список
      * @param node элемент списка, после которого добавляется value
      */
-    void add (T value, Node<T> node) {
+    void insert(T value, Node<T> node) {
         Node<T> next = node.next;
         Node<T> newNode = new Node<>();
         newNode.value = value;
@@ -68,10 +76,10 @@ public class TwoWayList <T extends Comparable<T>>{
      * @param value значение элемента, добавляемого в список
      * @param position значение элемента, после которого в список добавляется value
      */
-    public void add(T value, T position){
+    public void insert(T value, T position){
         Node<T> node = this.find(position);
-        if (node != null) this.add(value, node);
-        else this.add(value);
+        if (node != null) this.insert(value, node);
+        else this.pushBack(value);
     }
 
     /**
@@ -121,36 +129,84 @@ public class TwoWayList <T extends Comparable<T>>{
         }
     }
 
-    public void print(){
+    @Override
+    public String toString(){
         Node<T> currentNode = head;
+        StringJoiner sj = new StringJoiner(" ");
         while (currentNode != null){
-            System.out.printf("%s ", currentNode.value);
+            sj.add(currentNode.value.toString());
+//            System.out.printf("%s ", currentNode.value);
             currentNode = currentNode.next;
         }
-        System.out.println();
+//        System.out.println();
+        return sj.toString();
     }
 
     /**
      * быстрая сортировка двусвязного списка от меня
      */
-    public void quickSort () {
-        quickSort(head, tail);
+    public TwoWayList<T> quickSort () {
+        TwoWayList<T> buffer = new TwoWayList<>();
+        buffer.pushBack(head.value);
+        buffer.pushBack(tail.value);
+        quickSort(head.next, tail.previous, buffer);
+        return buffer;
+//        quickSort(head, tail);
+//        quickSort(head, tail, tail, head);
     }
 
-    void quickSort(Node<T> min, Node<T> max) {
-        Node<T> limit;
-        while (min.previous != max && min.previous != max.previous){
-            if(min.value.compareTo(max.value) > 0) {
-                T temp = min.value;
-                min.value = max.value;
-                max.value = temp;
+    //pushFront - это head, min. Pushback - это tail, max
+    void quickSort(Node<T> begin, Node<T> end, TwoWayList<T> buffer) {
+        while (begin.previous != end && begin.previous != end.previous) {
+            System.out.printf("%s, begin, %s end\n", begin.value, end.value);
+            //Условие 1: Минимум меньше begin
+            if(0 <= buffer.head.value.compareTo(begin.value)) {
+                System.out.printf("if#1 head %s, begin %s%n", buffer.head.value, begin.value);
+                buffer.pushFront(begin.value);
+                System.out.printf("Весь buffer: %s%n", buffer);
             }
-            System.out.printf("%s ", min.value);
-            min = min.next;
-            max = max.previous;
+            //Условие 2: Минимум меньше end
+            if(0 <= buffer.head.value.compareTo(end.value)){
+                System.out.printf("if#2 head %s, end %s%n", buffer.head.value, end.value);
+                buffer.pushFront(end.value);
+                System.out.printf("Весь buffer: %s%n", buffer);
+            }
+            //Условие 3: Максимум меньше begin(min-part)
+            if(0 >= buffer.tail.value.compareTo(begin.value)){
+                System.out.printf("if#3 tail %s, begin %s%n", buffer.tail.value, begin.value);
+                buffer.pushBack(begin.value);
+                System.out.printf("Весь buffer: %s%n", buffer);
+            }
+            //Условие 4: Максимум меньше end(max-part)
+            if(0 >= buffer.tail.value.compareTo(end.value)){
+                System.out.printf("if#4 tail %s, end %s%n", buffer.tail.value, end.value);
+                buffer.pushBack(end.value);
+                System.out.printf("Весь buffer: %s%n", buffer);
+            }
+            begin = begin.next;
+            end = end.previous;
+            System.out.println("конец итерации");
         }
-        System.out.println();
+        System.out.println("конец цикла\n");
     }
+
+
+    //    void quickSort(Node<T> min, Node<T> max, Node<T> minMiddleLimit, Node<T> middleMaxLimit)
+//    void quickSort(Node<T> min, Node<T> max) {
+//        while (min.previous != max && min.previous != max.previous){
+//            if(min.value.compareTo(max.value) > 0) {
+//                T temp = min.value;
+//                min.value = max.value;
+//                max.value = temp;
+//            }
+//            System.out.printf("%s ", min.value);
+//            min = min.next;
+//            max = max.previous;
+//        }
+//        System.out.println();
+//    }
+
+
 
     /**
      * Сортировка вставками по возрастанию
