@@ -143,14 +143,13 @@ public class TwoWayList <T extends Comparable<T>>{
     }
 
     /**
-     * стыренная сортировка слиянием
+     * Cортировка слиянием из интернета - с багами
      */
-    //1 - Публичный метод для инкапсуляции
     public void mergeSort() {
         mergeSort(head);
     }
 
-    //3 нужно разделять один список на два, вычленять середину. Стратегия быстрого и медленного указателя
+    //3 Стратегия быстрого и медленного указателя
     private Node<T> findMiddlePointer(Node<T> head) {
         Node<T> slow = head;
         Node<T> fast = head.next.next;
@@ -161,31 +160,29 @@ public class TwoWayList <T extends Comparable<T>>{
         return slow;
     }
 
-    //4 объединять отсортированные списки - это что получается, отдельно объект не создан, но пока есть эти два указателя, то они как бы голова и хвоста сортируемого подсписка?
-    //Он возвращает ту ноду, которая поменьше, чтобы она стала началом при сравнении и объединении следующей пары
-    /*
+
+    /* Метод возвращает ноду поменьше, но при этом во всей сортировке почему-то игнорируются значения меньше head
     51 55 61 16 91 84 0 61 39 97
     ----
     51 55 61 61 84 91 97
-     */
+    */
     private Node<T> merge(Node<T> a, Node<T> b) {
         if (a == null) return b;
         if (b == null) return a;
         if (0 >= a.value.compareTo(b.value)) {
             a.next = merge(a.next, b);
-            // a.next.previous = a;
-            // a.previous = null;
+            a.next.previous = a;
+            a.previous = null;
             return a;
         }
         else {
             b.next = merge(a, b.next);
-            // b.next.previous = b;
-            // b.previous = null;
+            b.next.previous = b;
+            b.previous = null;
             return b;
         }
     }
 
-    //Собственно сама сортировка
     Node<T> mergeSort(Node<T> begin) {
         if (begin == null ||  begin.next == null) return begin;
         Node<T> a = begin;
@@ -199,13 +196,8 @@ public class TwoWayList <T extends Comparable<T>>{
     }
 
 
-
-
-
-
-
     /**
-     * предсортировка двусвязного списка от меня
+     * должно было быть сортировкой, но пока просто хитрая итерация
      */
     public TwoWayList<T> quickSort () {
         TwoWayList<T> buffer = new TwoWayList<>();
@@ -298,14 +290,14 @@ public class TwoWayList <T extends Comparable<T>>{
         }
     }
 
-
+    private class Node <T extends Comparable<T>> {
+        T value;
+        Node<T> next;
+        Node<T> previous;
+    }
 }
 
-class Node <T extends Comparable<T>> {
-    T value;
-    Node<T> next;
-    Node<T> previous;
-}
+
 
 
 //    /**
