@@ -10,16 +10,8 @@ public class Main {
             twl.pushBack((int)(Math.random()*100));
         }
         System.out.println(twl);
-        TwoWayList sorted = twl.quickSort();
-//        twl.sort();
+        twl.mergeSort();
         System.out.println("----");
-        System.out.println(sorted);
-
-        //        twl.selectionSort(new Comparator<Integer>() {
-//            @Override
-//            public int compare(Integer o1, Integer o2) {
-//                return Integer.compare(o1, o2);
-//            }
-//        });
+        System.out.println(twl);
     }
 }

@@ -143,7 +143,69 @@ public class TwoWayList <T extends Comparable<T>>{
     }
 
     /**
-     * быстрая сортировка двусвязного списка от меня
+     * стыренная сортировка слиянием
+     */
+    //1 - Публичный метод для инкапсуляции
+    public void mergeSort() {
+        mergeSort(head);
+    }
+
+    //3 нужно разделять один список на два, вычленять середину. Стратегия быстрого и медленного указателя
+    private Node<T> findMiddlePointer(Node<T> head) {
+        Node<T> slow = head;
+        Node<T> fast = head.next.next;
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return slow;
+    }
+
+    //4 объединять отсортированные списки - это что получается, отдельно объект не создан, но пока есть эти два указателя, то они как бы голова и хвоста сортируемого подсписка?
+    //Он возвращает ту ноду, которая поменьше, чтобы она стала началом при сравнении и объединении следующей пары
+    /*
+    51 55 61 16 91 84 0 61 39 97
+    ----
+    51 55 61 61 84 91 97
+     */
+    private Node<T> merge(Node<T> a, Node<T> b) {
+        if (a == null) return b;
+        if (b == null) return a;
+        if (0 >= a.value.compareTo(b.value)) {
+            a.next = merge(a.next, b);
+            // a.next.previous = a;
+            // a.previous = null;
+            return a;
+        }
+        else {
+            b.next = merge(a, b.next);
+            // b.next.previous = b;
+            // b.previous = null;
+            return b;
+        }
+    }
+
+    //Собственно сама сортировка
+    Node<T> mergeSort(Node<T> begin) {
+        if (begin == null ||  begin.next == null) return begin;
+        Node<T> a = begin;
+        Node<T> slow = findMiddlePointer(begin);
+        Node<T> b = slow.next;
+        slow.next = null;
+        a = mergeSort(a);
+        b = mergeSort(b);
+        begin = merge(a, b);
+        return begin;
+    }
+
+
+
+
+
+
+
+    /**
+     * предсортировка двусвязного списка от меня
      */
     public TwoWayList<T> quickSort () {
         TwoWayList<T> buffer = new TwoWayList<>();
@@ -151,14 +213,13 @@ public class TwoWayList <T extends Comparable<T>>{
         buffer.pushBack(tail.value);
         quickSort(head.next, tail.previous, buffer);
         return buffer;
-//        quickSort(head, tail);
-//        quickSort(head, tail, tail, head);
     }
 
     //pushFront - это head, min. Pushback - это tail, max
     void quickSort(Node<T> begin, Node<T> end, TwoWayList<T> buffer) {
         while (begin.previous != end && begin.previous != end.previous) {
             System.out.printf("%s, begin, %s end\n", begin.value, end.value);
+
             //Условие 1: Минимум меньше begin
             if(0 <= buffer.head.value.compareTo(begin.value)) {
                 System.out.printf("if#1 head %s, begin %s%n", buffer.head.value, begin.value);
@@ -185,27 +246,11 @@ public class TwoWayList <T extends Comparable<T>>{
             }
             begin = begin.next;
             end = end.previous;
+
             System.out.println("конец итерации");
         }
         System.out.println("конец цикла\n");
     }
-
-
-    //    void quickSort(Node<T> min, Node<T> max, Node<T> minMiddleLimit, Node<T> middleMaxLimit)
-//    void quickSort(Node<T> min, Node<T> max) {
-//        while (min.previous != max && min.previous != max.previous){
-//            if(min.value.compareTo(max.value) > 0) {
-//                T temp = min.value;
-//                min.value = max.value;
-//                max.value = temp;
-//            }
-//            System.out.printf("%s ", min.value);
-//            min = min.next;
-//            max = max.previous;
-//        }
-//        System.out.println();
-//    }
-
 
 
     /**
