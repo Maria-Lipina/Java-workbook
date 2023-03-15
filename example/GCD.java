@@ -1,6 +1,6 @@
 package example;
 
-public class EuclidGCD {
+public class GCD {
 
     /**
      * Алгоритм Эвклида
@@ -8,7 +8,7 @@ public class EuclidGCD {
      * @param m int
      * @return int наибольший общий делитель n, m
      */
-    public static int find(int n, int m) {
+    public static int findbyEuclid(int n, int m) {
         while (n != 0 && m != 0) {
             if (n >= m) n = n % m;
             else m = m % n;
