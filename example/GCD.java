@@ -20,10 +20,8 @@ public class GCD {
         int modulo = 1;
         while (num2 != 0) {
             modulo = num1 % num2;
-            System.out.printf("gcd %d = num1 %d остаток num2 %d%n", modulo, num1, num2);
             num1 = num2;
             num2 = modulo;
-            System.out.println("----");
         }
         return num1;
     }

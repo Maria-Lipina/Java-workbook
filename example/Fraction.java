@@ -16,7 +16,7 @@ public class Fraction {
         this.denominator = denominator;
     }
 
-    private Fraction () {
+    private Fraction() {
         this.numerator = 1;
         this.denominator = 1;
     }
@@ -36,15 +36,14 @@ public class Fraction {
             a.numerator *= amult;
             b.numerator *= bmult;
             a.denominator *= amult;
-            b.denominator *= amult;
+            b.denominator *= bmult;
         }
         result.numerator = a.numerator + b.numerator;
         result.denominator = a.denominator;
-        while(GCD.findbyEuclid(result.numerator, result.denominator) > 1) {
-            result.numerator = result.numerator
-                    / GCD.findbyEuclid(result.numerator, result.denominator);
-            result.denominator = result.denominator
-                    / GCD.findbyEuclid(result.numerator, result.denominator);
+        while (GCD.findbyEuclid(result.numerator, result.denominator) > 1) {
+            int gcd = GCD.findbyEuclid(result.numerator, result.denominator);
+            result.numerator = result.numerator / gcd;
+            result.denominator = result.denominator / gcd;
         }
         return result;
     }
