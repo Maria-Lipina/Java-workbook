@@ -146,54 +146,73 @@ public class TwoWayList <T extends Comparable<T>>{
      * Cортировка слиянием из интернета - с багами
      */
     public void mergeSort() {
-        mergeSort(head);
+
+//        mergeSort(head);
+        mergeSort(head, tail);
     }
 
     //3 Стратегия быстрого и медленного указателя
     private Node<T> findMiddlePointer(Node<T> head) {
         Node<T> slow = head;
-        Node<T> fast = head.next.next;
+        Node<T> fast = head.next;
         while (fast != null) {
-            slow = slow.next;
             fast = fast.next;
+            if(fast != null) {
+                slow = slow.next;
+                fast = fast.next;
+            }
         }
         return slow;
     }
 
 
     /* Метод возвращает ноду поменьше, но при этом во всей сортировке почему-то игнорируются значения меньше head
-    51 55 61 16 91 84 0 61 39 97
-    ----
-    51 55 61 61 84 91 97
+     //84 5 69 75 61 81 52 69 92 42
     */
     private Node<T> merge(Node<T> a, Node<T> b) {
         if (a == null) return b;
         if (b == null) return a;
         if (0 >= a.value.compareTo(b.value)) {
             a.next = merge(a.next, b);
-            a.next.previous = a;
-            a.previous = null;
+//            a.next.previous = a;
+//            a.previous = null;
             return a;
         }
         else {
             b.next = merge(a, b.next);
-            b.next.previous = b;
-            b.previous = null;
+//            b.previous.next = b;
+//            b.previous = null;
             return b;
         }
     }
 
+    //нерабочий набросок
     Node<T> mergeSort(Node<T> begin) {
-        if (begin == null ||  begin.next == null) return begin;
+        if (begin == null || begin.next == null) return begin;
         Node<T> a = begin;
         Node<T> slow = findMiddlePointer(begin);
         Node<T> b = slow.next;
         slow.next = null;
         a = mergeSort(a);
-        b = mergeSort(b);
+        b =  mergeSort(b);
         begin = merge(a, b);
         return begin;
     }
+
+    //Не работает, набросок
+    void mergeSort(Node<T> begin, Node<T> end) {
+        if (begin == null && end != null) return;
+        if (begin != null && end == null) return;
+        Node<T> a = begin;
+        Node<T> b = end;
+        while (begin.previous != end && begin.previous != end.previous) {
+            begin = begin.next;
+            end = end.previous;
+        }
+        mergeSort(a, begin);
+        mergeSort(begin, b);
+    }
+
 
 
     /**
