@@ -7,8 +7,8 @@ import java.util.StringJoiner;
  * Базовая реализация двусвязного списка
  */
 public class TwoWayList <T extends Comparable<T>>{
-    Node<T> head;
-    Node<T> tail;
+        Node<T> head;
+        Node<T> tail;
 
     /**
      * Найти в двусвязном списке
