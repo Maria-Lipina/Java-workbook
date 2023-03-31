@@ -1,6 +1,9 @@
 package example;
 
+import java.util.Scanner;
+
 public class NumberSystem {
+
     /**
      * решение задачи:
      *
@@ -11,35 +14,48 @@ public class NumberSystem {
      * @param N строка-набор цифр в некой системе счисления
      * @return значение N в десятичной системе счисления
      */
-    public static int toDecNumber (String N) {
+    public static double toDecNumber (String N) {
 
-        int base = findNumberSystem(N);
-        int decNum = 0;
-        int i = N.length();
+        int[] base = findNumberSystemAndDot(N);
+        double decNum = 0;
+        int i = base[1];
 
         do {
-            int pow = (int) Math.pow(base, N.length() - i);
+            int pow = (int) Math.pow(base[0], base[1] - i);
             int dig = N.charAt(i-1) - '0';
-            if (dig > 9) dig = 10 + N.charAt(i-1) - 'A';
-            decNum += dig*pow;
-            i -=1;
+            if (dig > 9) dig = 10 + N.charAt(i - 1) - 'A';
+            decNum += dig * pow;
+            i -= 1;
         } while (i > 0);
 
+        if (base[1] < N.length()) {
+            int start = base[1];
+            for (int j = start+1; j < N.length(); j++) {
+                double pow = Math.pow(base[0], -(j - start));
+                int dig = N.charAt(j) - '0';
+                if (dig > 9) dig = 10 + N.charAt(j) - 'A';
+                decNum += dig * pow;
+            }
+        }
         return decNum;
     }
 
-    public static int findNumberSystem(String N) {
+    static int[] findNumberSystemAndDot(String N) {
 
-        int base = 1;
+        int [] base = {0, N.length()};
 
         for (int i = 0; i < N.length(); i++) {
             int digit = N.charAt(i) - '0';
-            if (digit > 9) {
-                digit = 10 + (N.charAt(i) - 'A');
+            if (digit != -2) {
+                if (digit > 9) {
+                    digit = 10 + (N.charAt(i) - 'A');
+                }
+                if (base[0] < digit) base[0] = digit;
+            } else {
+                base[1] = i;
             }
-            if (base < digit) base = digit;
         }
-
-        return base+1;
+        base[0] += 1;
+        return base;
     }
 }
