@@ -5,31 +5,36 @@ import java.util.Stack;
 
 public class PolishNotation {
 
+    /**
+     * Вычислить значение арифметического выражения, заданного в польской нотации
+     * @param tokens массив строк, каждый элемент которого представляет собой операцию или операнд
+     * @return значение выражения
+     */
     public static int calc(String[] tokens) {
-        Set<String> ops = Set.of("+", "-", "*", "/");
-        Stack<Integer> opnds = new Stack<>();
+        Set<String> operations = Set.of("+", "-", "*", "/");
+        Stack<Integer> operands = new Stack<>();
         for (int i = 0; i < tokens.length; i++) {
-            if (!ops.contains(tokens[i])) {
-                opnds.push(Integer.parseInt(tokens[i]));
+            if (!operations.contains(tokens[i])) {
+                operands.push(Integer.parseInt(tokens[i]));
             } else {
                 switch (tokens[i]) {
                     case "+":
-                        opnds.push(opnds.pop() + opnds.pop());
+                        operands.push(operands.pop() + operands.pop());
                         break;
                     case "-":
-                        opnds.push(-opnds.pop() + opnds.pop());
+                        operands.push(-operands.pop() + operands.pop());
                         break;
                     case "*":
-                        opnds.push(opnds.pop() * opnds.pop());
+                        operands.push(operands.pop() * operands.pop());
                         break;
                     case "/":
-                        int temp = opnds.pop();
-                        opnds.push(opnds.pop() / temp);
+                        int temp = operands.pop();
+                        operands.push(operands.pop() / temp);
                         break;
                 }
             }
         }
-        return opnds.peek();
+        return operands.peek();
     }
 
 }

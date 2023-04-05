@@ -1,6 +1,6 @@
 package example;
 
-public class MyHashMap {
+public class BinaryTree {
     Node root;
     private class Node{
         int value;

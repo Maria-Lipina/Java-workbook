@@ -2,8 +2,6 @@ package example;
 
 import java.util.Stack;
 
-/*Ссылка на задачу https://leetcode.com/problems/min-stack/ */
-
 public class MinStack {
         Stack<int[]> st;
     

@@ -16,13 +16,4 @@ public class GCD {
         return n + m;
     }
 
-    public static int find1(int num1, int num2) {
-        int modulo = 1;
-        while (num2 != 0) {
-            modulo = num1 % num2;
-            num1 = num2;
-            num2 = modulo;
-        }
-        return num1;
-    }
 }

@@ -50,7 +50,7 @@ public class MathExpr {
         int c = Integer.parseInt(numbers[2]);
 
         if (a + b == c) {
-            System.out.printf("%d + %d = %d\n", a, b, c);
+            System.out.printf("%d + %d = %d%n", a, b, c);
         }
         
     }

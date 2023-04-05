@@ -1,6 +1,6 @@
 package example;
 
-public class TreeFractal {
+public class TreeFactorial {
 
     public static long treelike (int n) {
         if (n < 0)
@@ -12,7 +12,7 @@ public class TreeFractal {
         return treelike(2, n);
     }
 
-    public static long treelike(int start, int end) {
+    private static long treelike(int start, int end) {
         if (start > end)
             return 1;
         if (start == end)
