@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 public class PasswordGenerator {
 
-    private static final String chars = "0123456789ABCDEFGHIJKLM01234NOPQRSTUVWXYZ0123456789abcdefghijklmn56789opqrstuvwxyz0123456789"
+    private static final String chars = "0123456789ABCDEFGHIJKLM01234NOPQRSTUVWXYZ0123456789abcdefghijklmn56789opqrstuvwxyz0123456789";
 
 
     public static void withHash(String outputFile, byte passLen, int quantity) {
