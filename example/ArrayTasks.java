@@ -1,5 +1,7 @@
 package example;
 
+import java.util.Scanner;
+
 public class ArrayTasks {
 
     /**
@@ -44,17 +46,30 @@ public class ArrayTasks {
         }
     }
 
+
     /**
      * Даны два строго возрастающих массива целых чисел A[0..n], B[0..m] и число k.
      * Найти количество таких пар индексов (i, j), что A[i] + B[j] = k при обходе массива B от конца к началу. Время работы O(n + m).
+     * <br>Адаптировала решение <a href="https://github.com/OlegSchwann/Technopark-algorithms/blob/master/1-%D0%B9%20%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D1%8C/1%20%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%203%20%D0%B2%D0%B0%D1%80%D0%B8%D0%B0%D0%BD%D1%82/main.cpp">по ссылке</a>
      */
-    public static int indexPairsCount(int[] a, int[] b, int k) {
+    public static int countPairs(int[] a, int[] b, int k) {
         int result = 0;
-        int i = 0;
-        int j = b.length-1;
-        while (i < a.length && j > 0) {
-            if (a[i] + b[j] == k) result++;
-            i++; j--;
+        for (int i = 0, j = b.length-1; i < a.length && j > -1;) {
+            int sum = a[i] + b[j];
+            if (sum > k) j--;
+            if (sum < k) i++;
+            if (sum == k) {
+                result++;
+                i++; j--;
+            }
+        }
+        return result;
+    }
+
+    public static int[] compose(Scanner arrLength){
+        int[] result = new int[arrLength.nextInt()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = i;
         }
         return result;
     }

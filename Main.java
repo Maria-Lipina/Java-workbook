@@ -7,32 +7,17 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        int [] arr = {-5, 0, 3, 18};
-        int [] arr1 = {-10, -2, 4, 7, 12};
+        int [] arr = ArrayTasks.compose(sc);
+        int [] arr1 = ArrayTasks.compose(sc);
 
-        System.out.println(ArrayTasks.indexPairsCount(arr, arr1, 7));
-//        System.out.println(
-//                ArrayTasks.indexPairsCount(composeArray(sc), composeArray(sc), sc.nextInt()
-//                ));
-
-
-
-//        Instant start = Instant.now();
-//        Thread.sleep(10);
-//        Instant finish = Instant.now();
-//        System.out.println("Время выполнения:" +
-//                Duration.between(start, finish).toMillis());
-    }
-
-    static int[] composeArray(Scanner sc){
-        int[] result = new int[sc.nextInt()];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = sc.nextInt();
-        }
-        return result;
+        Instant start = Instant.now();
+        System.out.println(ArrayTasks.countPairs(arr, arr1, 100));
+        Instant finish = Instant.now();
+        System.out.println("Время выполнения:" +
+                Duration.between(start, finish).toMillis());
     }
 
 }
