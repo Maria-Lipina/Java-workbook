@@ -1,7 +1,4 @@
 import example.ArrayTasks;
-import example.BinarySearch;
-import example.BitShift;
-import example.TreeFactorial;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -10,13 +7,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int [] arr = {0, 2, 4, 5, 5, 5, 5, 6, 7, 9, 11, 13};
+        int [] arr = {1, 3, 2, 1, 5, 3, 6, 1, 4, 1, 1, 3, 7, 1};
+        System.out.println(Arrays.toString(ArrayTasks.deleteElement(arr, 1)));
 
-        System.out.println(new BinarySearch().extended(arr, 5));
-        System.out.println("---");
-        System.out.println(new BinarySearch().extended(arr, 5, false));
-        System.out.println("---");
-        System.out.println(new BinarySearch().extended(arr, 5, true));
 
 //        Instant start = Instant.now();
 //        Instant finish = Instant.now();

@@ -1,5 +1,6 @@
 package example;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ArrayTasks {
@@ -74,4 +75,22 @@ public class ArrayTasks {
         return result;
     }
 
+    /**
+     * Удаление из массива всех элементов, равных указанному.
+     * @param arr массив
+     * @param n элемент, который нужно удалить.
+     * @return копию массива arr без элементов, равных n. Вот она разница между С++ и Java. в С++ для этого есть динамический вектор с поддержкой индексов. Здесь такого нет. Здесь если только связным списком или копированием
+     */
+    public static int[] deleteElement(int[] arr, int n) {
+        int check = 0;
+        int pos = 0;
+        while(check < arr.length) {
+            if (arr[check] != n) {
+                arr[pos] = arr[check];
+                pos++;
+            }
+            check++;
+        }
+        return Arrays.copyOfRange(arr, 0, pos);
+    }
 }
