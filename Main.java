@@ -7,7 +7,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int [] arr = {1, 3, 2, 1, 5, 3, 6, 1, 4, 1, 1, 3, 7, 1};
+        int [] arr = {10, 20, 30};
+        int [] arr1 = {9, 15, 35};
         System.out.println(Arrays.toString(ArrayTasks.deleteElement(arr, 1)));
 
 
